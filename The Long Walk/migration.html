@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ancient Human Migrations — The Long Walk</title>
+<meta name="description" content="A computational reconstruction of ancient human migration from 19,029 ancient-DNA samples: clustering, modelled flows, the top five migrations, and the data's honest limits.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..600&family=Work+Sans:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🧬</text></svg>">
+</head>
+<body>
+<main>
+  <section class="banner">
+    <div class="wrap" style="padding-block:clamp(3rem,8vw,5rem);max-width:820px">
+      <div class="eyebrow">Chapter II &middot; the genomic trail</div>
+      <h1 style="font-size:clamp(2.4rem,6vw,4.2rem);font-weight:540;line-height:1">Where we went, written in <em style="color:var(--accent);font-style:italic">DNA</em></h1>
+      <p class="lede" style="font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--ink-muted);margin-top:1.3rem">Once <em>Homo sapiens</em> left Africa, fossils give way to genomes. This chapter reconstructs ancient human migration from <strong>19,029 ancient-DNA samples</strong> — finding population clusters, modelling directional flows, and telling the story while staying honest about what the data can and cannot show.</p>
+      <div class="dl-row">
+        <a class="dl" href="#atlas">↓ Interactive map</a>
+        <a class="dl" href="#events">↓ Top 5 migrations</a>
+        <a class="dl" href="#narrative">↓ The narrative</a>
+        <a class="dl" href="#methods">↓ Methods & data</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="stat-grid reveal" id="stat-grid"></div>
+  </section>
+
+  <!-- MAP -->
+  <section class="wrap" id="atlas">
+    <div class="sec-head reveal">
+      <span class="kicker">Interactive atlas</span>
+      <h2>Clusters, flows & the deep-time frontier</h2>
+      <p>Toggle the layers below. <strong>Population clusters</strong> are spatio-temporal groups found by DBSCAN, sized by sample count and coloured by region. <strong>Migration flows</strong> are the top modelled directional links between an older source and a younger, genetically similar neighbour. <strong>Pleistocene samples</strong> are the rare Ice-Age genomes (≥15,000 years old).</p>
+    </div>
+    <div class="map-toolbar reveal">
+      <button class="toggle" data-layer="clusters" aria-pressed="true"><span class="dot" style="background:#3a6b8f"></span>Population clusters</button>
+      <button class="toggle" data-layer="flows" aria-pressed="true"><span class="dot" style="background:#b4531f"></span>Migration flows</button>
+      <button class="toggle" data-layer="deep" aria-pressed="false"><span class="dot" style="background:#222"></span>Pleistocene samples (≥15 ka)</button>
+    </div>
+    <div id="map"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <!-- TOP 5 EVENTS -->
+  <section class="wrap" id="events">
+    <div class="sec-head reveal">
+      <span class="kicker">The findings</span>
+      <h2>Top five migration events</h2>
+      <p>Ranked for global significance, prioritising the Out-of-Africa dispersal. Each event pairs the genomic signal with the environmental and technological pressures that drove it.</p>
+    </div>
+    <div class="events">
+      <div class="event reveal"><div class="rank">1</div><div>
+        <h3>The Out-of-Africa dispersal</h3>
+        <div class="when">~70,000 – 40,000 years ago &middot; NE Africa → Arabia → all of Eurasia</div>
+        <p>Modern humans expanded from Africa along a southern coastal arc and a northern continental route, reaching Siberia (<span class="mono">Ust'-Ishim, ~45 ka</span>), Europe (<span class="mono">Zlatý kůň, Bacho Kiro</span>) and China (<span class="mono">Tianyuan, ~40 ka</span>) — meeting and interbreeding with Neanderthals on the way.</p>
+        <p><strong>Drivers:</strong> MIS&nbsp;3 climate swings and humid "Green Arabia" pulses opened and closed corridors; fully modern cognition powered rapid range expansion.</p>
+        <span class="conf mod">Confidence: Moderate — outcome confirmed, route inferred</span>
+      </div></div>
+
+      <div class="event reveal"><div class="rank">2</div><div>
+        <h3>Anatolian farmers settle Europe</h3>
+        <div class="when">~8,500 – 6,000 years ago &middot; Çatalhöyük → Danube & Mediterranean → Iberia</div>
+        <p>The first farmers spread agriculture across Europe in a wave of people, not just ideas. The diagnostic Y-haplogroup <span class="mono">G2a</span> dominates early European farmers and is near-absent in the hunter-gatherers they replaced.</p>
+        <p><strong>Drivers:</strong> early-Holocene warming made rain-fed cereal farming viable; agriculture's higher carrying capacity fuelled demic diffusion.</p>
+        <span class="conf high">Confidence: High</span>
+      </div></div>
+
+      <div class="event reveal"><div class="rank">3</div><div>
+        <h3>The Steppe (Yamnaya) expansion</h3>
+        <div class="when">~5,000 – 4,500 years ago &middot; Pontic-Caspian steppe → central & northern Europe</div>
+        <p>Pastoralists from the steppe (Khvalynsk → Yamnaya, carrying <span class="mono">R1b/R1a</span>) swept west as Corded Ware and Bell Beaker, in places replacing up to ~75% of the local gene pool — a second remaking of Europe.</p>
+        <p><strong>Drivers:</strong> wagons, horses and dairy pastoralism; the 5.2 ka and 4.2 ka aridification events favoured mobile herders; possibly early plague.</p>
+        <span class="conf high">Confidence: High</span>
+      </div></div>
+
+      <div class="event reveal"><div class="rank">4</div><div>
+        <h3>Peopling of the Americas</h3>
+        <div class="when">~16,000 – 13,000 years ago &middot; NE Siberia → Beringia → the Americas</div>
+        <p>A founding population crossed the Bering land bridge and spread the length of two continents with astonishing speed. Every Indigenous American cluster carries the Beringian founder signature (<span class="mono">Y-hg Q1b</span>); <span class="mono">Anzick-1, ~12.7 ka</span> anchors the lineage.</p>
+        <p><strong>Drivers:</strong> low glacial sea level exposed Beringia; post-LGM deglaciation opened both coastal and interior routes after a genetic "standstill".</p>
+        <span class="conf high">Confidence: High</span>
+      </div></div>
+
+      <div class="event reveal"><div class="rank">5</div><div>
+        <h3>The Austronesian / Lapita expansion</h3>
+        <div class="when">~3,500 – 700 years ago &middot; Island SE Asia / Taiwan → Remote Oceania</div>
+        <p>Seafarers carried an Asian genetic signature (<span class="mono">Y-hg O</span>) across the Pacific to Vanuatu, the Marianas (<span class="mono">Guam Latte / Chamoru</span>) and ultimately Polynesia, later mixing with Papuan populations.</p>
+        <p><strong>Drivers:</strong> outrigger and double-hulled canoes plus open-ocean navigation; a farming-and-fishing package that made distant islands habitable.</p>
+        <span class="conf high">Confidence: High</span>
+      </div></div>
+    </div>
+    <div class="callout reveal" style="margin-top:1.6rem">
+      <strong>Other waves worth noting:</strong> the Sintashta–Andronovo Indo-Iranian expansion eastward into Central &amp; South Asia (~4–3 ka, carrying R1a-Z93); late-Holocene movements along the East African / Swahili coast; and Bronze-Age gene flow within the Levant. These appear in the cluster data but sit just outside the top five.
+    </div>
+  </section>
+
+  <!-- FIGURES + GAPS -->
+  <section class="wrap" id="gaps">
+    <div class="sec-head reveal">
+      <span class="kicker">An honest map of our ignorance</span>
+      <h2>The data is Eurocentric and Holocene-heavy</h2>
+      <p>A responsible analysis foregrounds its own gaps. Ancient DNA survives best in cool, recent, well-excavated places — which badly skews what we can see.</p>
+    </div>
+    <figure class="fig reveal">
+      <img src="assets/img/fig_sampling_gap.png" alt="Histogram showing ancient-DNA samples are overwhelmingly from the last 10,000 years">
+      <figcaption>Sampling through time. 99.6% of ancient samples are younger than 30,000 years; the Out-of-Africa window holds just 68. The deep past is a data desert.</figcaption>
+    </figure>
+    <figure class="fig reveal">
+      <img src="assets/img/fig_deeptime.png" alt="World map of Pleistocene ancient-DNA samples, all in Eurasia, none in Africa">
+      <figcaption>Every Ice-Age genome (≥15 ka) sits in Eurasia. Africa — the source of all dispersals — has no ancient DNA this old, because warm climates destroy it.</figcaption>
+    </figure>
+    <div class="callout reveal">
+      <strong>Flagged limitations.</strong> (1) Africa is just ~1% of samples and none older than ~18.5 ka, inverting the true demographic history. (2) The raw genotype matrix was not processed — "genetic similarity" uses curated population labels and uniparental haplogroups as proxies. (3) The climate layer is a date-keyed Quaternary chronology, not sample-measured cores, so climate is context rather than a tested cause. Throughout, <em>confirmed</em> findings rest on in-hand aDNA; <em>inferred</em> findings are reasoned from downstream evidence and labelled as such.
+    </div>
+  </section>
+
+  <!-- NARRATIVE -->
+  <section class="wrap narrative" id="narrative">
+    <div class="sec-head reveal">
+      <span class="kicker">For a mixed audience of geneticists & archaeologists</span>
+      <h2>Reading the human journey from a partial archive</h2>
+    </div>
+    <div class="reveal" style="max-width:70ch">
+      <p>The story this dataset tells is, at first, a story about its own gaps. We assembled 19,029 ancient individuals from the Allen Ancient DNA Resource, each carrying a place, a date, a curated ancestry label and, often, a paternal and maternal haplogroup. Yet when we plot those samples through time, 99.6&nbsp;percent of them are younger than 30,000 years, and more than two-thirds come from Europe. The very window we set out to prioritise — the Out-of-Africa dispersal between 70,000 and 30,000 years ago — contains just sixty-eight individuals, and the African homeland that launched every later migration is represented by fewer samples than a single medieval European cemetery. Any honest reconstruction must therefore separate what the genomes <em>confirm</em> from what we <em>infer</em> around their silences.</p>
+      <p>What the genomes confirm is remarkable enough. Unsupervised DBSCAN clustering on a combined geographic-and-temporal metric recovered 226 spatio-temporal populations whose haplogroup signatures align precisely with the known archaeological record. We can watch a single thread run from Çatalhöyük's farmers in Anatolia (Y-haplogroup G2a) out across Europe as the Linearbandkeramik, their agricultural package advancing in step with early-Holocene warming and largely overwriting the resident hunter-gatherers. We can watch a second thread gather on the Pontic-Caspian steppe — Khvalynsk, then Yamnaya, marked by R1b — and burst westward around 5,000 years ago on the back of wagons, horses and dairying, remaking the European gene pool a second time as Corded Ware and Bell Beaker. The same steppe engine turns east as Sintashta and Andronovo, carrying R1a-Z93 and chariot technology toward Central and South Asia. Each of these events surfaced not as an assumption but as a top-ranked edge in our migration-flow model, where an older population is linked to a younger, genetically similar, geographically reachable neighbour.</p>
+      <p>Beyond Eurasia, the founder signatures are equally clean. Every Indigenous American cluster, from Anzick-1 in Pleistocene Montana to the Classic Maya, carries the Beringian Q1b paternal lineage — the fingerprint of a small population that paused in a glacial refugium while sea levels were low, then spread the length of two continents once deglaciation opened the coastal and interior routes. In Remote Oceania, the Mariana Islands' Latte-period people and the settlers of Vanuatu carry East Asian O lineages, the maritime calling-card of the Austronesian expansion that outrigger canoes made possible. In each case the driver is legible: a climate door opening, a technology unlocking new range, or a demographic engine — farming's carrying capacity — pushing one people into another's land.</p>
+      <p>The deepest and most important migration, however, we can only see in silhouette. The Out-of-Africa dispersal left no in-window genomes in its African or Arabian source. We infer it instead from its descendants: Ust'-Ishim in Siberia and Zlatý kůň and Bacho Kiro in Europe, all near 45,000 years old, with the Oase individual preserving a Neanderthal ancestor only a handful of generations back. From these downstream points, and from the climate record of MIS&nbsp;3 with its intermittently "green" Arabia, we reconstruct a dispersal threading humid corridors out of Africa during favourable pulses — a confident outcome resting on an inferred route.</p>
+      <p>The methodological honesty matters as much as the findings. We did not process the multi-gigabyte genotype matrix; our "genetic similarity" rests on curated labels and uniparental markers, and our climate layer is a date-keyed chronology rather than sample-measured cores. The clustering's resolution depends on a tuned space-time exchange rate. None of this overturns the signal, but all of it bounds our certainty. The clearest scientific message is therefore double-edged: ancient DNA has turned the last ten thousand years of Eurasian prehistory into something we can read almost like a ledger, while the older, tropical and African chapters — the ones that actually made us a global species — remain frustratingly, instructively blank.</p>
+    </div>
+  </section>
+
+  <!-- METHODS + DOWNLOADS -->
+  <section class="wrap" id="methods">
+    <div class="sec-head reveal">
+      <span class="kicker">Reproducibility</span>
+      <h2>Methods, data & downloads</h2>
+      <p>The full pipeline and every intermediate output are available below.</p>
+    </div>
+    <figure class="fig reveal">
+      <img src="assets/img/fig_clusters_flows.png" alt="World map of population clusters and modelled migration flows">
+      <figcaption>The full analysis map: 154 mapped population clusters (coloured by region, sized by sample count) and the 55 highest-scoring modelled migration flows.</figcaption>
+    </figure>
+    <table class="method-table reveal">
+      <thead><tr><th>Step</th><th>Method</th><th>Output</th></tr></thead>
+      <tbody>
+        <tr><td>Source</td><td>AADR v66.p1 annotation file (Harvard Dataverse, doi:10.7910/DVN/FFIDCW)</td><td>23,089 individuals → 19,029 ancient samples</td></tr>
+        <tr><td>Clean & unify</td><td>Filter to dated, geolocated ancient samples; derive region & climate context</td><td>unified_samples.csv</td></tr>
+        <tr><td>Cluster</td><td>DBSCAN in 3-D Earth-Cartesian geography + time (2.5 km/yr exchange rate, eps=360 km)</td><td>226 clusters · cluster_summary.csv</td></tr>
+        <tr><td>Model flows</td><td>Directed edges: older→younger, genetic-similarity (haplogroup cosine) × proximity × recency</td><td>8,205 flows · migration_flows.csv</td></tr>
+      </tbody>
+    </table>
+    <div class="dl-row reveal">
+      <a class="dl" href="assets/data/migration_report.md" download>⬇ Full report (.md)</a>
+      <a class="dl" href="assets/data/unified_samples.csv" download>⬇ Unified samples (.csv)</a>
+      <a class="dl" href="assets/data/cluster_summary.csv" download>⬇ Cluster summary (.csv)</a>
+      <a class="dl" href="assets/data/cluster_centroids.csv" download>⬇ Cluster centroids (.csv)</a>
+      <a class="dl" href="assets/data/migration_flows.csv" download>⬇ Migration flows (.csv)</a>
+    </div>
+    <div class="sec-head reveal" style="margin-top:3rem">
+      <h2 style="font-size:1.5rem">Suggested next steps</h2>
+    </div>
+    <div class="rsec reveal" style="--sp-accent:var(--accent)"><ul>
+      <li>Ingest the genotype matrix and run genome-wide PCA / qpAdm / F-statistics to replace haplogroup proxies and <em>quantify</em> admixture per migration.</li>
+      <li>Merge real paleoclimate series (NOAA/PANGAEA cores) by space-time nearest-neighbour to test climate causation statistically.</li>
+      <li>Target the gaps: prioritise African, Arabian and South/SE Asian Pleistocene sampling; integrate sedimentary aDNA.</li>
+      <li>Apply spatially-explicit coalescent / diffusion models to estimate migration rates and directions with uncertainty.</li>
+      <li>Overlay pathogen aDNA (e.g. Yersinia pestis) to test disease as a co-driver of population turnovers.</li>
+    </ul></div>
+  </section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/app.js"></script>
+<script src="js/migration.js"></script>
+<script>SITE.init('migration.html');</script>
+<script data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
