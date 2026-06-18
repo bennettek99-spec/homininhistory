@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Molecules That Made Us — Interactive 3D Protein Viewer | The Long Walk</title>
+<meta name="description" content="Spin and explore 3D structures of the proteins behind human evolution — FOXP2 (the 'language gene'), haemoglobin, amylase, EPAS1 and more — in an interactive viewer.">
+<link rel="canonical" href="https://homininhistory.com/proteins.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Molecules That Made Us — Interactive 3D Protein Viewer">
+<meta property="og:description" content="Explore the 3D structures of the proteins behind human evolution — FOXP2, haemoglobin, amylase and more — in an interactive viewer.">
+<meta property="og:url" content="https://homininhistory.com/proteins.html">
+<meta property="og:site_name" content="The Long Walk">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..600&family=Work+Sans:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#129460;</text></svg>">
+<style>
+  .pv-head{border-bottom:1px solid var(--line);padding-block:clamp(2.4rem,6vw,4.2rem) clamp(1.4rem,4vw,2.4rem);
+    background:radial-gradient(1100px 460px at 82% -25%,color-mix(in oklab,var(--gold-soft),transparent 45%),transparent 62%)}
+  .crumbs{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-faint);margin-bottom:1.05rem;letter-spacing:.03em}
+  .crumbs a{color:var(--ink-muted)} .crumbs a:hover{color:var(--accent)}
+  .pv-head .eyebrow{margin-bottom:.85rem}
+  .pv-head h1{font-size:clamp(2rem,5vw,3.25rem);font-weight:540;max-width:20ch;line-height:1.05}
+  .pv-head h1 em{font-style:italic;color:var(--accent)}
+  .pv-head .lede{font-size:clamp(1.05rem,2.1vw,1.27rem);color:var(--ink-muted);margin-top:1.05rem;max-width:64ch}
+
+  /* App layout */
+  .pv-app{display:grid;grid-template-columns:1fr;gap:1.2rem;padding-block:clamp(1.6rem,4vw,2.6rem)}
+  @media(min-width:920px){.pv-app{grid-template-columns:280px 1fr;align-items:start}}
+
+  /* Gallery */
+  .pv-gallery{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+  @media(min-width:920px){.pv-gallery{grid-template-columns:1fr;position:sticky;top:80px}}
+  .pv-pick{text-align:left;display:flex;flex-direction:column;gap:.15rem;padding:.7rem .85rem;border:1px solid var(--line);
+    border-radius:var(--r-md);background:var(--surface);transition:border-color var(--t),transform var(--t),box-shadow var(--t)}
+  .pv-pick:hover{border-color:color-mix(in oklab,var(--accent),transparent 55%);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+  .pv-pick[aria-current="true"]{border-color:var(--accent);background:color-mix(in oklab,var(--accent),transparent 90%)}
+  .pv-pick .nm{font-family:var(--font-display);font-size:1.06rem;font-weight:560;color:var(--ink);line-height:1.1}
+  .pv-pick .gn{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .pv-pick .tg{font-size:.82rem;color:var(--ink-muted);line-height:1.3;margin-top:.1rem}
+
+  /* Stage */
+  .pv-stage{border:1px solid var(--line);border-radius:var(--r-lg);background:var(--surface);overflow:hidden;box-shadow:var(--shadow-sm)}
+  .pv-viewport{position:relative;width:100%;height:clamp(380px,56vh,620px);
+    background:
+      radial-gradient(120% 120% at 50% 0%, color-mix(in oklab,var(--gold-soft),transparent 55%), transparent 60%),
+      var(--paper-2)}
+  .pv-viewport canvas{border-radius:0}
+  .pv-status{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:2rem;pointer-events:none}
+  .pv-status .box{font-family:var(--font-mono);font-size:.82rem;color:var(--ink-muted);background:color-mix(in oklab,var(--paper),transparent 12%);
+    border:1px solid var(--line);border-radius:var(--r-md);padding:.7rem 1.1rem;backdrop-filter:blur(4px)}
+  .pv-spinner{width:34px;height:34px;border-radius:50%;border:3px solid color-mix(in oklab,var(--accent),transparent 70%);
+    border-top-color:var(--accent);animation:pv-spin .8s linear infinite;margin:0 auto .7rem}
+  @keyframes pv-spin{to{transform:rotate(360deg)}}
+  .pv-hint{position:absolute;left:.7rem;bottom:.7rem;font-family:var(--font-mono);font-size:.66rem;color:var(--ink-faint);
+    background:color-mix(in oklab,var(--paper),transparent 25%);padding:.25rem .5rem;border-radius:var(--r-sm);pointer-events:none}
+
+  /* Toolbar */
+  .pv-bar{display:flex;flex-wrap:wrap;gap:.5rem .7rem;align-items:center;padding:.8rem 1rem;border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);background:var(--surface-2)}
+  .pv-field{display:flex;align-items:center;gap:.4rem}
+  .pv-field label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+  .pv-sel{font-family:var(--font-body);font-size:.84rem;color:var(--ink);background:var(--surface);border:1px solid var(--line-strong);
+    border-radius:var(--r-sm);padding:.34rem .5rem}
+  .pv-btn{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-muted);
+    border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:.4rem .65rem;background:var(--surface);transition:all var(--t)}
+  .pv-btn:hover{color:var(--accent);border-color:var(--accent)}
+  .pv-btn[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .pv-btn.special{color:var(--gold);border-color:color-mix(in oklab,var(--gold),transparent 45%)}
+  .pv-btn.special[aria-pressed="true"]{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .pv-spacer{flex:1 1 auto;min-width:.5rem}
+
+  /* Meta panel */
+  .pv-meta{padding:1.05rem 1.15rem}
+  .pv-meta .nm{font-family:var(--font-display);font-size:1.4rem;font-weight:560}
+  .pv-meta .nm em{font-style:italic;color:var(--ink-muted);font-size:1rem;font-weight:400}
+  .pv-meta .src{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-faint);margin-top:.25rem}
+  .pv-meta .src strong{color:var(--ink-muted);font-weight:600}
+  .pv-meta .blurb{font-size:.96rem;color:var(--ink-muted);margin-top:.7rem;line-height:1.55;max-width:68ch}
+  .pv-links{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.85rem}
+  .pv-links a{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.03em;color:var(--teal);border:1px solid color-mix(in oklab,var(--teal),transparent 60%);
+    border-radius:var(--r-sm);padding:.28rem .55rem;transition:all var(--t)}
+  .pv-links a:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* Custom load + legend */
+  .pv-extra{display:flex;flex-wrap:wrap;gap:1rem 1.6rem;align-items:center;justify-content:space-between;margin-top:1rem;
+    padding:.9rem 1.1rem;border:1px dashed var(--line-strong);border-radius:var(--r-md);background:color-mix(in oklab,var(--surface),transparent 30%)}
+  .pv-load{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}
+  .pv-load input{font-family:var(--font-mono);font-size:.82rem;width:8.5rem;text-transform:uppercase;color:var(--ink);
+    background:var(--surface);border:1px solid var(--line-strong);border-radius:var(--r-sm);padding:.4rem .55rem}
+  .pv-load .lbl{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* Story cards */
+  .pv-stories{padding-block:clamp(1rem,4vw,2.4rem)}
+  .pv-stories h2{font-size:clamp(1.5rem,3vw,2rem);font-weight:520;margin-bottom:1.3rem;display:flex;align-items:center;gap:.7rem}
+  .pv-stories h2::before{content:"";width:26px;height:2px;background:var(--accent);flex:none}
+  .story-grid{display:grid;grid-template-columns:1fr;gap:1rem}
+  @media(min-width:680px){.story-grid{grid-template-columns:1fr 1fr}}
+  .story{border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);padding:1.1rem 1.25rem;box-shadow:var(--shadow-sm)}
+  .story .gn{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600}
+  .story h3{font-size:1.18rem;font-weight:560;margin:.15rem 0 .1rem}
+  .story h3 .sub{font-family:var(--font-body);font-size:.84rem;font-weight:400;color:var(--ink-faint)}
+  .story p{font-size:.94rem;color:var(--ink-muted);margin:.5rem 0 0;line-height:1.6}
+  .story button.jump{margin-top:.7rem;font-family:var(--font-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.04em;
+    color:var(--teal);border:1px solid color-mix(in oklab,var(--teal),transparent 60%);border-radius:var(--r-sm);padding:.3rem .6rem;transition:all var(--t)}
+  .story button.jump:hover{color:var(--accent);border-color:var(--accent)}
+
+  .pv-note{max-width:75ch;margin-inline:auto;padding-block:clamp(1rem,4vw,2rem)}
+  .pv-note p{font-size:1.02rem;color:var(--ink);margin-bottom:1.1rem;max-width:72ch}
+  .pv-note h2{font-size:clamp(1.4rem,2.8vw,1.8rem);font-weight:520;margin:2rem 0 .9rem;display:flex;align-items:center;gap:.7rem}
+  .pv-note h2::before{content:"";width:26px;height:2px;background:var(--accent);flex:none}
+  .cta{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:0 var(--r-md) var(--r-md) 0;padding:1.5rem 1.7rem;margin:2.4rem 0}
+  .cta p{margin:0 0 1rem;font-size:1.04rem;max-width:none}
+  .refs{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+  .refs .lbl{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-faint);display:block;margin-bottom:1rem}
+  .refs ol{padding-left:1.3rem;display:flex;flex-direction:column;gap:.55rem;margin:0}
+  .refs li{font-size:.85rem;color:var(--ink-muted);max-width:74ch}
+  .refs a{color:var(--teal);border-bottom:1px solid color-mix(in oklab,var(--teal),transparent 60%)}
+  .refs a:hover{color:var(--accent)}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"The Molecules That Made Us — Interactive 3D Protein Viewer","description":"An interactive 3D viewer for the proteins behind human evolution, including FOXP2, haemoglobin, salivary amylase, EPAS1, lactase and MC1R.","isPartOf":{"@type":"WebSite","name":"The Long Walk","url":"https://homininhistory.com/"},"isAccessibleForFree":true}</script>
+</head>
+<body>
+<main>
+  <header class="pv-head">
+    <div class="wrap">
+      <div class="crumbs"><a href="index.html">The Long Walk</a> / Molecules</div>
+      <div class="eyebrow">Interactive &middot; Molecules</div>
+      <h1>The <em>Molecules</em> That Made Us</h1>
+      <p class="lede">Evolution doesn't only live in fossils and skulls — it's written into the proteins our cells build. Spin, zoom and restyle the real 3D structures behind some of the most human stories in our genome, starting with FOXP2, the so-called "language gene".</p>
+    </div>
+  </header>
+
+  <section class="wrap" style="padding-block:0">
+    <div class="pv-app">
+      <!-- Protein gallery -->
+      <aside class="pv-gallery" id="gallery" aria-label="Choose a protein"></aside>
+
+      <!-- Viewer stage -->
+      <div class="pv-stage">
+        <div class="pv-viewport" id="viewport">
+          <div class="pv-status" id="status"><div class="box">Loading viewer…</div></div>
+          <div class="pv-hint">Drag to rotate · scroll to zoom · right-drag to pan</div>
+        </div>
+
+        <div class="pv-bar">
+          <div class="pv-field">
+            <label for="geom">Style</label>
+            <select class="pv-sel" id="geom">
+              <option value="cartoon">Cartoon (ribbon)</option>
+              <option value="stick">Sticks</option>
+              <option value="ballstick">Ball &amp; stick</option>
+              <option value="sphere">Spacefill</option>
+              <option value="surface">Surface</option>
+            </select>
+          </div>
+          <div class="pv-field">
+            <label for="color">Colour</label>
+            <select class="pv-sel" id="color">
+              <option value="spectrum">Rainbow (N→C)</option>
+              <option value="chain">By chain</option>
+              <option value="ss">Secondary structure</option>
+              <option value="element">By element</option>
+              <option value="bfactor">Confidence / B-factor</option>
+            </select>
+          </div>
+          <button class="pv-btn special" id="residues" hidden aria-pressed="false">Human-specific residues</button>
+          <div class="pv-spacer"></div>
+          <button class="pv-btn" id="spin" aria-pressed="false">Spin</button>
+          <button class="pv-btn" id="reset">Reset view</button>
+        </div>
+
+        <!-- Active protein meta -->
+        <div class="pv-meta" id="meta"></div>
+      </div>
+    </div>
+
+    <!-- Custom structure loader -->
+    <div class="pv-extra">
+      <div class="pv-load">
+        <span class="lbl">Load any structure</span>
+        <input id="pdbid" type="text" maxlength="8" placeholder="e.g. 1HHO" aria-label="Four-character PDB ID" autocomplete="off" spellcheck="false">
+        <button class="pv-btn" id="pdbgo">Fetch PDB ID</button>
+      </div>
+      <span class="lbl" style="font-family:var(--font-mono);font-size:.66rem;color:var(--ink-faint)">Structures: RCSB Protein Data Bank &amp; AlphaFold DB</span>
+    </div>
+  </section>
+
+  <!-- The evolution stories (static, crawlable) -->
+  <section class="wrap pv-stories" id="stories">
+    <h2>Why these molecules?</h2>
+    <p style="color:var(--ink-muted);max-width:72ch;margin-bottom:1.4rem">Each protein below carries a chapter of the human story — a change of diet, a move to thin mountain air, a borrowed gene from an archaic cousin, or the deep machinery of speech. Pick one to load it in the viewer above.</p>
+    <div class="story-grid" id="story-grid"></div>
+  </section>
+
+  <!-- How to read a structure -->
+  <section class="wrap pv-note">
+    <h2>How to read a protein structure</h2>
+    <p>Proteins are long chains of amino acids that fold into precise 3D shapes — and the shape <em>is</em> the function. The default <strong>cartoon</strong> view simplifies the chain into ribbons: coiled <em>helices</em> and flat <em>sheets</em> show the protein's architecture, while the "rainbow" colouring runs from the start of the chain (blue) to the end (red), so you can trace its path.</p>
+    <p>Switch to <strong>sticks</strong> or <strong>spacefill</strong> to see individual atoms, or <strong>surface</strong> to see the molecule's outer shape — the contours that let it grip DNA, oxygen or a sugar. Crystal structures (four-character PDB codes like <span class="mono">2A07</span>) are experimentally measured. <strong>AlphaFold</strong> models are computational predictions; with "Confidence" colouring, warmer regions are lower-confidence — often floppy, disordered stretches that don't hold one fixed shape.</p>
+
+    <div class="cta">
+      <p>These proteins belong to specific players in our family tree — the Denisovans behind the altitude gene, the Neanderthals who shared our FOXP2. Meet them on the interactive timeline.</p>
+      <a class="btn" href="index.html#timeline">Explore the family tree →</a>
+    </div>
+
+    <div class="refs">
+      <span class="lbl">Sources &amp; further reading</span>
+      <ol>
+        <li>Enard, W. et al. (2002). "Molecular evolution of <em>FOXP2</em>, a gene involved in speech and language." <em>Nature</em> 418. <a href="https://www.nature.com/articles/nature01025">nature.com</a></li>
+        <li>Stroud, J. C. et al. (2006). "Structure of the forkhead domain of FOXP2 bound to DNA." <em>Structure</em> 14 (PDB 2A07). <a href="https://www.rcsb.org/structure/2A07">rcsb.org/2A07</a></li>
+        <li>Krause, J. et al. (2007). "The derived FOXP2 variant of modern humans was shared with Neandertals." <em>Current Biology</em> 17. <a href="https://www.cell.com/current-biology/fulltext/S0960-9822(07)02080-0">cell.com</a></li>
+        <li>Perry, G. H. et al. (2007). "Diet and the evolution of human amylase gene copy number variation." <em>Nature Genetics</em> 39. <a href="https://www.nature.com/articles/ng2123">nature.com</a></li>
+        <li>Huerta-Sánchez, E. et al. (2014). "Altitude adaptation in Tibetans caused by introgression of Denisovan-like DNA." <em>Nature</em> 512 (EPAS1). <a href="https://www.nature.com/articles/nature13408">nature.com</a></li>
+        <li>Jumper, J. et al. (2021). "Highly accurate protein structure prediction with AlphaFold." <em>Nature</em> 596. <a href="https://www.nature.com/articles/s41586-021-03819-2">nature.com</a></li>
+        <li>RCSB Protein Data Bank. <a href="https://www.rcsb.org/">rcsb.org</a> &middot; AlphaFold Protein Structure Database. <a href="https://alphafold.ebi.ac.uk/">alphafold.ebi.ac.uk</a></li>
+        <li>3Dmol.js — Rego &amp; Koes (2015), <em>Bioinformatics</em> 31. <a href="https://3dmol.org/">3dmol.org</a></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<script src="js/app.js"></script>
+<script>SITE.init('proteins.html');</script>
+<script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+<script>
+(function(){
+  // ---- Curated proteins (human-evolution angle) ----------------------------
+  var PROTEINS = [
+    {
+      id:'foxp2', name:'FOXP2', gene:'FOXP2', tag:'The “language gene”',
+      blurb:'A transcription factor that switches other genes on and off in the developing brain and vocal circuitry. The human version differs from the chimpanzee’s by just two amino acids — T303N and N325S — fixed on our lineage after the split, and the gene carries signatures of positive selection. Mutations in it cause an inherited speech-and-language disorder. Neanderthals shared the same two human changes, so the truth is subtler than “the gene that gave us speech”.',
+      sources:[
+        {label:'Forkhead domain bound to DNA', type:'pdb', value:'2A07',
+         note:'1.9 Å crystal structure (Stroud et al. 2006) — FOXP2’s DNA-binding domain clamped onto its target.',
+         links:[['PDB 2A07','https://www.rcsb.org/structure/2A07']]},
+        {label:'Full protein (AlphaFold prediction)', type:'af', value:'O15409',
+         note:'Predicted model of the whole protein. The two human-specific residues sit outside the folded forkhead domain.',
+         highlights:[{resi:303,text:'303 · Thr→Asn'},{resi:325,text:'325 · Asn→Ser'}],
+         links:[['UniProt O15409','https://www.uniprot.org/uniprotkb/O15409/entry'],['AlphaFold','https://alphafold.ebi.ac.uk/entry/O15409']]}
+      ]
+    },
+    {
+      id:'hbb', name:'Haemoglobin', gene:'HBA / HBB', tag:'Oxygen, malaria & natural selection',
+      blurb:'The oxygen-ferrying protein of red blood cells: four globin chains cradling four iron-bearing haem groups. A single base change in the β-globin gene makes sickle haemoglobin (HbS) — one copy guards against malaria, two copies cause sickle-cell disease. Because malaria kept the protective allele common, HbS is the textbook example of natural selection still acting on living humans.',
+      sources:[
+        {label:'Human deoxyhaemoglobin', type:'pdb', value:'4HHB',
+         note:'The classic Fermi & Perutz structure of human deoxyhaemoglobin — four chains, four haems.',
+         links:[['PDB 4HHB','https://www.rcsb.org/structure/4HHB']]}
+      ]
+    },
+    {
+      id:'amy1', name:'Salivary amylase', gene:'AMY1', tag:'Starch, diet & copy number',
+      blurb:'The enzyme in saliva that begins breaking starch into sugar — the reason bread turns sweet as you chew. Humans typically carry many more copies of the AMY1 gene than chimpanzees do, and populations with starchy diets tend to carry the most: more gene copies mean more enzyme. It’s a striking case of recent dietary adaptation written in copy number rather than a single mutation.',
+      sources:[
+        {label:'Human salivary α-amylase', type:'pdb', value:'1SMD',
+         note:'Crystal structure of human salivary α-amylase, the protein the AMY1 gene encodes.',
+         links:[['PDB 1SMD','https://www.rcsb.org/structure/1SMD']]}
+      ]
+    },
+    {
+      id:'epas1', name:'EPAS1 / HIF-2α', gene:'EPAS1', tag:'A gene borrowed from Denisovans',
+      blurb:'A master switch in the body’s response to low oxygen. A version of EPAS1 that lets Tibetans thrive above 4,000 m — without the thickened, dangerous blood lowlanders develop at altitude — was inherited from the Denisovans, an archaic human group known mostly from DNA. It is one of the clearest cases of adaptive introgression: a useful gene borrowed from another kind of human.',
+      sources:[
+        {label:'Full protein (AlphaFold prediction)', type:'af', value:'Q99814',
+         note:'Predicted model of the human EPAS1 (HIF-2α) protein; no full-length crystal structure exists.',
+         links:[['UniProt Q99814','https://www.uniprot.org/uniprotkb/Q99814/entry'],['AlphaFold','https://alphafold.ebi.ac.uk/entry/Q99814']]}
+      ]
+    },
+    {
+      id:'lct', name:'Lactase', gene:'LCT', tag:'Milk-drinking into adulthood',
+      blurb:'The gut enzyme that digests lactose, the sugar in milk. In most mammals it switches off after weaning; in many humans a regulatory mutation keeps it on for life — “lactase persistence”. Different mutations arose independently in Europe and in African herding peoples within roughly the last 10,000 years: evolution responding to dairying, several separate times.',
+      sources:[
+        {label:'Full protein (AlphaFold prediction)', type:'af', value:'P09848',
+         note:'Predicted model of the large lactase-phlorizin hydrolase protein encoded by LCT.',
+         links:[['UniProt P09848','https://www.uniprot.org/uniprotkb/P09848/entry'],['AlphaFold','https://alphafold.ebi.ac.uk/entry/P09848']]}
+      ]
+    },
+    {
+      id:'mc1r', name:'MC1R', gene:'MC1R', tag:'Skin, hair & latitude',
+      blurb:'A receptor on pigment cells that helps decide whether they make dark eumelanin or lighter pheomelanin — a major control on skin and hair colour. As humans spread into cloudier, higher latitudes, variation here was shaped by the trade-off between UV protection and vitamin-D synthesis. Some Neanderthals carried their own reduced-function MC1R variant, hinting at pale skin or red hair.',
+      sources:[
+        {label:'Full protein (AlphaFold prediction)', type:'af', value:'Q01726',
+         note:'Predicted model of the MC1R receptor — a seven-pass membrane protein, hence the bundle of helices.',
+         links:[['UniProt Q01726','https://www.uniprot.org/uniprotkb/Q01726/entry'],['AlphaFold','https://alphafold.ebi.ac.uk/entry/Q01726']]}
+      ]
+    }
+  ];
+
+  var SITE_PALETTE = ['#b4531f','#2f6f6a','#a9791f','#6e4a3a','#caa86f','#8a5a40','#963f15','#5fa39c'];
+
+  var viewer=null, curModel=null, current=null, curSource=null;
+  var geom='cartoon', colorMode='spectrum', spinning=false, showRes=false;
+  var loadToken=0;
+
+  var elGallery=document.getElementById('gallery');
+  var elStoryGrid=document.getElementById('story-grid');
+  var elStatus=document.getElementById('status');
+  var elMeta=document.getElementById('meta');
+  var elResidues=document.getElementById('residues');
+  var elGeom=document.getElementById('geom');
+  var elColor=document.getElementById('color');
+  var elSpin=document.getElementById('spin');
+
+  function status(msg, spinner){
+    if(!msg){ elStatus.hidden=true; elStatus.innerHTML=''; return; }
+    elStatus.hidden=false;
+    elStatus.innerHTML='<div class="box">'+(spinner?'<div class="pv-spinner"></div>':'')+msg+'</div>';
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+
+  // ---- Build the gallery + story cards ------------------------------------
+  PROTEINS.forEach(function(p){
+    var b=document.createElement('button');
+    b.className='pv-pick'; b.id='pick-'+p.id; b.setAttribute('aria-current','false');
+    b.innerHTML='<span class="gn">'+esc(p.gene)+'</span><span class="nm">'+esc(p.name)+'</span><span class="tg">'+esc(p.tag)+'</span>';
+    b.addEventListener('click',function(){selectProtein(p.id,0);});
+    elGallery.appendChild(b);
+
+    var s=document.createElement('article');
+    s.className='story';
+    s.innerHTML='<span class="gn">'+esc(p.gene)+'</span><h3>'+esc(p.name)+' <span class="sub">'+esc(p.tag)+'</span></h3>'+
+      '<p>'+esc(p.blurb)+'</p><button class="jump" data-id="'+p.id+'">View in 3D ↑</button>';
+    elStoryGrid.appendChild(s);
+  });
+  elStoryGrid.addEventListener('click',function(e){
+    var btn=e.target.closest('button.jump'); if(!btn) return;
+    selectProtein(btn.getAttribute('data-id'),0);
+    document.getElementById('viewport').scrollIntoView({behavior:'smooth',block:'center'});
+  });
+
+  // ---- Structure loading ---------------------------------------------------
+  function loadPDB(id){
+    return fetch('https://files.rcsb.org/download/'+id.toUpperCase()+'.pdb').then(function(r){
+      if(!r.ok) throw new Error('PDB '+id+' not found'); return r.text();
+    });
+  }
+  function loadAlphaFold(acc){
+    // API first (version-proof), then fall back to direct file URLs newest-first.
+    return fetch('https://alphafold.ebi.ac.uk/api/prediction/'+acc).then(function(r){
+      if(!r.ok) throw 0; return r.json();
+    }).then(function(j){
+      var url=j&&j[0]&&j[0].pdbUrl; if(!url) throw 0;
+      return fetch(url).then(function(r){ if(!r.ok) throw 0; return r.text(); });
+    }).catch(function(){
+      var versions=['v6','v5','v4'];
+      var tryNext=function(i){
+        if(i>=versions.length) throw new Error('AlphaFold model for '+acc+' unavailable');
+        return fetch('https://alphafold.ebi.ac.uk/files/AF-'+acc+'-F1-model_'+versions[i]+'.pdb')
+          .then(function(r){ if(!r.ok) throw 0; return r.text(); })
+          .catch(function(){ return tryNext(i+1); });
+      };
+      return tryNext(0);
+    });
+  }
+
+  function loadStructure(source){
+    var token=++loadToken;
+    status('Loading '+(source.type==='af'?'AlphaFold model':'structure '+source.value)+'…', true);
+    showRes=false; syncResidueBtn();
+    var fetcher = source.type==='af' ? loadAlphaFold(source.value) : loadPDB(source.value);
+    fetcher.then(function(data){
+      if(token!==loadToken) return;            // a newer request superseded this one
+      viewer.removeAllSurfaces(); viewer.removeAllLabels(); viewer.removeAllModels();
+      curModel=viewer.addModel(data,'pdb');
+      applyStyle();
+      viewer.zoomTo(); viewer.render(); status(null);
+    }).catch(function(err){
+      if(token!==loadToken) return;
+      status('Couldn’t load this structure.<br>'+esc(err&&err.message||'Network error')+'.<br>Try again or check your connection.', false);
+    });
+  }
+
+  // ---- Styling -------------------------------------------------------------
+  function chains(){
+    if(!curModel) return [];
+    var seen={}, out=[];
+    curModel.selectedAtoms({}).forEach(function(a){ if(!(a.chain in seen)){seen[a.chain]=1; out.push(a.chain);} });
+    return out;
+  }
+
+  function applyStyle(){
+    if(!curModel) return;
+    viewer.removeAllSurfaces();
+    viewer.setStyle({}, {});                   // clear
+
+    // Geometry spec (without colour)
+    var rep={};
+    if(geom==='cartoon') rep={cartoon:{}};
+    else if(geom==='stick') rep={stick:{radius:0.18}};
+    else if(geom==='ballstick') rep={stick:{radius:0.14},sphere:{scale:0.28}};
+    else if(geom==='sphere') rep={sphere:{}};
+    else if(geom==='surface') rep={cartoon:{}};  // show cartoon under the surface
+
+    // Colour
+    if(colorMode==='chain'){
+      var chs=chains();
+      viewer.setStyle({}, rep);
+      chs.forEach(function(ch,i){
+        var col=SITE_PALETTE[i%SITE_PALETTE.length];
+        var styled={};
+        Object.keys(rep).forEach(function(k){ styled[k]=Object.assign({},rep[k],{color:col}); });
+        viewer.setStyle({chain:ch}, styled);
+      });
+    } else {
+      var colspec;
+      if(colorMode==='spectrum') colspec={color:'spectrum'};
+      else if(colorMode==='ss') colspec={colorscheme:'ssPyMOL'};
+      else if(colorMode==='element') colspec={colorscheme:'default'};
+      else if(colorMode==='bfactor') colspec={colorscheme:{prop:'b',gradient:'roygb',min:50,max:95}};
+      else colspec={color:'spectrum'};
+      var merged={};
+      Object.keys(rep).forEach(function(k){ merged[k]=Object.assign({},rep[k],colspec); });
+      viewer.setStyle({}, merged);
+    }
+
+    if(geom==='surface'){
+      viewer.addSurface($3Dmol.SurfaceType.VDW, {opacity:0.82, color:'#c8a06a'}, {});
+    }
+    if(showRes) paintResidues();
+    viewer.render();
+  }
+
+  function paintResidues(){
+    if(!curSource||!curSource.highlights) return;
+    curSource.highlights.forEach(function(h){
+      viewer.setStyle({resi:h.resi}, {stick:{radius:0.3,color:'#b4531f'},sphere:{scale:0.45,color:'#b4531f'}});
+      viewer.addLabel(h.text, {position:{resi:h.resi}, backgroundColor:'#241b12', backgroundOpacity:0.85,
+        fontColor:'#f1e9db', fontSize:12, borderThickness:0.5, borderColor:'#b4531f', inFront:true});
+    });
+  }
+
+  // ---- Selection -----------------------------------------------------------
+  function selectProtein(id, sourceIdx){
+    var p=PROTEINS.filter(function(x){return x.id===id;})[0]; if(!p) return;
+    current=p; curSource=p.sources[sourceIdx||0];
+    PROTEINS.forEach(function(x){
+      var b=document.getElementById('pick-'+x.id);
+      if(b) b.setAttribute('aria-current', x.id===id?'true':'false');
+    });
+    renderMeta();
+    loadStructure(curSource);
+  }
+
+  function renderMeta(){
+    var p=current, src=curSource;
+    var sourceSel='';
+    if(p.sources.length>1){
+      sourceSel='<div class="pv-field" style="margin-top:.7rem"><label for="srcsel">Structure</label>'+
+        '<select class="pv-sel" id="srcsel">'+p.sources.map(function(s,i){
+          return '<option value="'+i+'"'+(s===src?' selected':'')+'>'+esc(s.label)+'</option>';
+        }).join('')+'</select></div>';
+    }
+    var links=(src.links||[]).map(function(l){return '<a href="'+l[1]+'" target="_blank" rel="noopener">'+esc(l[0])+' ↗</a>';}).join('');
+    elMeta.innerHTML='<div class="nm">'+esc(p.name)+' <em>· '+esc(p.gene)+'</em></div>'+
+      '<div class="src"><strong>'+esc(src.label)+'</strong> — '+esc(src.note)+'</div>'+
+      sourceSel+
+      '<div class="pv-links">'+links+'</div>';
+    var ss=document.getElementById('srcsel');
+    if(ss) ss.addEventListener('change',function(){ selectProtein(p.id, parseInt(this.value,10)); });
+    // residue button visibility
+    if(src.highlights){ elResidues.hidden=false; elResidues.textContent='Human-specific residues'; }
+    else elResidues.hidden=true;
+    syncResidueBtn();
+  }
+  function syncResidueBtn(){ elResidues.setAttribute('aria-pressed', showRes?'true':'false'); }
+
+  // ---- Controls ------------------------------------------------------------
+  elGeom.addEventListener('change',function(){ geom=this.value; applyStyle(); });
+  elColor.addEventListener('change',function(){ colorMode=this.value; applyStyle(); });
+  elSpin.addEventListener('click',function(){
+    spinning=!spinning; this.setAttribute('aria-pressed',spinning?'true':'false');
+    if(viewer){ viewer.spin(spinning?'y':false); }
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    if(viewer){ viewer.zoomTo(); viewer.render(); }
+  });
+  elResidues.addEventListener('click',function(){
+    if(!curSource||!curSource.highlights) return;
+    showRes=!showRes; syncResidueBtn();
+    applyStyle();
+    if(showRes && curSource.highlights.length){
+      viewer.zoomTo({resi:curSource.highlights.map(function(h){return h.resi;})});
+      viewer.zoom(0.55); viewer.render();
+    } else { viewer.zoomTo(); viewer.render(); }
+  });
+  function loadCustom(){
+    var v=document.getElementById('pdbid').value.trim();
+    if(!/^[0-9A-Za-z]{4}$/.test(v)){ status('Enter a valid 4-character PDB ID (e.g. 1HHO).', false); return; }
+    PROTEINS.forEach(function(x){var b=document.getElementById('pick-'+x.id);if(b)b.setAttribute('aria-current','false');});
+    current=null; curSource={label:'Custom: '+v.toUpperCase(),type:'pdb',value:v,note:'Loaded from the RCSB Protein Data Bank.',
+      links:[['PDB '+v.toUpperCase(),'https://www.rcsb.org/structure/'+v.toUpperCase()]]};
+    elMeta.innerHTML='<div class="nm">PDB '+esc(v.toUpperCase())+'</div><div class="src">Loaded from the RCSB Protein Data Bank.</div>'+
+      '<div class="pv-links"><a href="https://www.rcsb.org/structure/'+v.toUpperCase()+'" target="_blank" rel="noopener">View on RCSB ↗</a></div>';
+    elResidues.hidden=true;
+    loadStructure(curSource);
+  }
+  document.getElementById('pdbgo').addEventListener('click',loadCustom);
+  document.getElementById('pdbid').addEventListener('keydown',function(e){ if(e.key==='Enter') loadCustom(); });
+
+  // ---- Boot ----------------------------------------------------------------
+  function boot(){
+    if(typeof $3Dmol==='undefined'){
+      status('The 3D viewer couldn’t load (it needs WebGL and a network connection). Try reloading the page.', false);
+      return;
+    }
+    try{
+      viewer=$3Dmol.createViewer('viewport',{backgroundColor:'white',backgroundAlpha:0});
+    }catch(e){ viewer=null; }
+    if(!viewer){
+      status('Your browser couldn’t start WebGL, which the 3D viewer needs. The molecule details below still work — try a different browser or device for the 3D view.', false);
+      return;
+    }
+    window.addEventListener('resize',function(){ if(viewer) viewer.resize(); });
+    selectProtein('foxp2',0);   // default: FOXP2 forkhead + DNA
+  }
+  // 3Dmol script is loaded just above; if it hasn't parsed yet, wait for load.
+  if(typeof $3Dmol!=='undefined') boot();
+  else window.addEventListener('load',boot);
+})();
+</script>
+</body>
+</html>
