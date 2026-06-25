@@ -69,7 +69,7 @@ p{text-wrap:pretty;max-width:70ch}
 @media(max-width:640px){
   .nav-in{gap:.5rem;height:auto;min-height:64px;flex-wrap:wrap;padding-block:.5rem;row-gap:.2rem}
   .brand span{font-size:1rem}
-  .nav-links{gap:.05rem;margin-left:auto}
+  .nav-links{gap:.05rem;margin-left:auto;flex-wrap:wrap;justify-content:flex-end;row-gap:.1rem}
   .nav-links a:not(.btn){font-size:.7rem;padding:.45rem .5rem;letter-spacing:.02em}
 }
 @media(max-width:380px){.brand span{display:none}}

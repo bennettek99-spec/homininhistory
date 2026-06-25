@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Which Hominin Are You? — A Human-Evolution Personality Quiz | The Long Walk</title>
+<meta name="description" content="Answer 8 quick questions and discover which ancient human you really are — Neanderthal, Homo erectus, the Hobbit, a Denisovan and more. Fun, fast, and grounded in real science.">
+<link rel="canonical" href="https://homininhistory.com/quiz/index.html">
+<meta name="theme-color" content="#16110b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Which Hominin Are You?">
+<meta property="og:description" content="Take the 8-question quiz and find out which ancient human you are — from loyal Neanderthal to globe-trotting Homo erectus.">
+<meta property="og:url" content="https://homininhistory.com/quiz/">
+<meta property="og:site_name" content="The Long Walk">
+<meta property="og:image" content="https://homininhistory.com/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Which Hominin Are You?">
+<meta name="twitter:description" content="8 questions. 8 ancient humans. Which one are you?">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..600&family=Work+Sans:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>&#129460;</text></svg>">
+<style>
+  /* ---------- Quiz-specific UI (playful layer over the site's design system) ---------- */
+  .quiz-wrap{max-width:760px;margin-inline:auto;padding-inline:clamp(1.1rem,4vw,2rem)}
+  .quiz-stage{padding-block:clamp(1.6rem,4vw,2.6rem) clamp(3rem,7vw,5rem);min-height:70vh}
+
+  /* Intro */
+  .q-intro{text-align:center;padding-block:clamp(2rem,6vw,3.4rem)}
+  .q-intro .eyebrow{justify-content:center;margin-bottom:1.1rem}
+  .q-intro h1{font-size:clamp(2.3rem,7vw,4.2rem);font-weight:560;line-height:1.02}
+  .q-intro h1 em{font-style:italic;color:var(--accent)}
+  .q-intro .lede{color:var(--ink-muted);font-size:clamp(1.05rem,2.4vw,1.28rem);margin:1.2rem auto 0;max-width:46ch}
+  .q-emblems{display:flex;flex-wrap:wrap;justify-content:center;gap:.55rem;margin:1.8rem auto 2rem;max-width:30rem}
+  .q-emblems span{width:40px;height:40px;display:grid;place-items:center;border-radius:50%;
+    border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-sm)}
+  .q-emblems span svg{width:22px;height:22px}
+  .q-meta{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-top:1.5rem}
+  .q-start{font-size:1.05rem;padding:.95rem 2rem;margin-top:.3rem}
+
+  /* Progress */
+  .q-progress{display:flex;align-items:center;gap:.9rem;margin-bottom:1.8rem}
+  .q-count{font-family:var(--font-mono);font-size:.78rem;letter-spacing:.08em;color:var(--ink-faint);white-space:nowrap}
+  .q-track{position:relative;flex:1;height:8px;border-radius:99px;background:var(--surface-2);border:1px solid var(--line);overflow:hidden}
+  .q-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:99px;
+    background:linear-gradient(90deg,var(--gold),var(--accent));transition:width .45s cubic-bezier(.16,1,.3,1)}
+
+  /* Question */
+  .q-card{animation:qIn .45s cubic-bezier(.16,1,.3,1)}
+  @keyframes qIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  .q-num{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:.7rem}
+  .q-text{font-family:var(--font-display);font-size:clamp(1.55rem,4.2vw,2.3rem);font-weight:540;line-height:1.12;margin-bottom:1.6rem;text-wrap:balance}
+  .q-opts{display:flex;flex-direction:column;gap:.7rem}
+  .q-opt{display:flex;align-items:center;gap:.95rem;width:100%;text-align:left;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--r-md);
+    padding:1rem 1.1rem;font-size:1.02rem;color:var(--ink);line-height:1.4;
+    transition:transform var(--t),border-color var(--t),background var(--t),box-shadow var(--t)}
+  .q-opt:hover{border-color:var(--accent);background:color-mix(in oklab,var(--accent),transparent 92%);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .q-opt .lt{flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:8px;
+    font-family:var(--font-mono);font-size:.86rem;font-weight:600;color:var(--accent);
+    background:color-mix(in oklab,var(--accent),transparent 86%);border:1px solid color-mix(in oklab,var(--accent),transparent 70%)}
+  .q-opt.picked{border-color:var(--accent);background:color-mix(in oklab,var(--accent),transparent 84%);transform:scale(.99)}
+  .q-opt.picked .lt{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .q-back{margin-top:1.4rem;font-family:var(--font-mono);font-size:.78rem;letter-spacing:.06em;color:var(--ink-faint);
+    display:inline-flex;align-items:center;gap:.4rem;padding:.4rem .2rem}
+  .q-back:hover{color:var(--accent)}
+  .q-back[hidden]{display:none}
+
+  /* Result */
+  .q-result{position:relative;animation:qIn .5s cubic-bezier(.16,1,.3,1)}
+  .r-top{text-align:center;position:relative;overflow:hidden;border-radius:var(--r-xl);
+    border:1px solid var(--line);background:
+      radial-gradient(540px 220px at 50% -10%, color-mix(in oklab,var(--rc,var(--accent)),transparent 78%), transparent 70%),
+      var(--surface);
+    padding:clamp(1.8rem,5vw,2.8rem) 1.4rem clamp(1.6rem,4vw,2.2rem)}
+  .r-badge{width:104px;height:104px;margin:0 auto 1rem;display:grid;place-items:center;border-radius:50%;
+    color:var(--rc,var(--accent));background:color-mix(in oklab,var(--rc,var(--accent)),transparent 88%);
+    border:2px solid color-mix(in oklab,var(--rc,var(--accent)),transparent 55%);box-shadow:var(--shadow-md)}
+  .r-badge svg{width:54px;height:54px}
+  .r-kicker{font-family:var(--font-mono);font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-faint)}
+  .r-epithet{font-family:var(--font-display);font-size:clamp(1.9rem,5.5vw,3rem);font-weight:560;color:var(--rc,var(--accent));line-height:1.05;margin:.25rem 0 .1rem}
+  .r-name{font-family:var(--font-display);font-style:italic;font-size:clamp(1.05rem,2.6vw,1.35rem);color:var(--ink)}
+  .r-blurb{color:var(--ink);font-size:1.06rem;line-height:1.6;margin:1.5rem auto 0;max-width:60ch}
+  .r-blurb em{color:var(--ink-muted);font-style:italic}
+
+  .r-facts{margin-top:1.6rem;display:grid;gap:.7rem}
+  .r-fact{display:flex;gap:.75rem;align-items:flex-start;background:var(--surface);border:1px solid var(--line);
+    border-left:3px solid var(--rc,var(--accent));border-radius:0 var(--r-md) var(--r-md) 0;padding:.85rem 1rem;font-size:.98rem;color:var(--ink)}
+  .r-fact .fi{flex:none;font-size:1.05rem;line-height:1.3}
+
+  .r-share{margin-top:1.7rem;text-align:center}
+  .r-share .btn{font-size:1rem;padding:.85rem 1.7rem}
+  .r-sharehint{font-family:var(--font-mono);font-size:.74rem;color:var(--ink-faint);margin-top:.7rem;min-height:1.1em;transition:color var(--t)}
+  .r-sharehint.ok{color:var(--teal)}
+
+  .r-ctas{margin-top:1.8rem;display:grid;gap:.7rem}
+  @media(min-width:560px){.r-ctas{grid-template-columns:1fr 1fr}}
+  .r-cta{display:flex;flex-direction:column;gap:.15rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r-md);padding:.95rem 1.1rem;transition:transform var(--t),border-color var(--t),box-shadow var(--t)}
+  .r-cta:hover{border-color:var(--rc,var(--accent));transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .r-cta .k{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .r-cta .v{font-size:1.02rem;color:var(--ink);font-weight:560}
+  .r-cta.tree{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between;
+    background:color-mix(in oklab,var(--rc,var(--accent)),transparent 92%);border-color:color-mix(in oklab,var(--rc,var(--accent)),transparent 70%)}
+  .r-retake{margin-top:1.6rem;text-align:center}
+  .r-retake button{font-family:var(--font-mono);font-size:.82rem;letter-spacing:.04em;color:var(--ink-muted);
+    border:1px solid var(--line-strong);border-radius:99px;padding:.55rem 1.2rem;transition:all var(--t)}
+  .r-retake button:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* tiny confetti burst */
+  .confetti{position:absolute;top:0;left:0;width:100%;height:0;pointer-events:none;z-index:3}
+  .confetti i{position:absolute;top:0;width:8px;height:8px;border-radius:2px;opacity:0;animation:confFall 1.5s ease-out forwards}
+  @keyframes confFall{0%{opacity:1;transform:translateY(-10px) rotate(0)}100%{opacity:0;transform:translateY(220px) rotate(420deg)}}
+  @media (prefers-reduced-motion:reduce){.confetti{display:none}.q-card,.q-result{animation:none}}
+
+  [hidden]{display:none!important}
+</style>
+</head>
+<body>
+<div class="scroll-prog"></div>
+<header class="nav"><div class="wrap nav-in">
+  <a class="brand" href="../index.html"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The Long Walk</span></a>
+  <nav class="nav-links">
+    <a href="../index.html">Timeline</a>
+    <a href="../migration.html">Migrations</a>
+    <a href="../proteins.html">Molecules</a>
+    <a href="../blog/index.html">Articles</a>
+    <a href="index.html" class="active">Quiz</a>
+    <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"></button>
+  </nav></div></header>
+
+<main class="quiz-wrap quiz-stage">
+
+  <!-- INTRO -->
+  <section id="intro" class="q-intro">
+    <div class="eyebrow" style="display:flex">A Long Walk diversion</div>
+    <h1>Which <em>Hominin</em><br>Are You?</h1>
+    <p class="lede">Eight questions stand between you and the truth about which ancient human you really are. Built for fun — but every result is grounded in the real fossil record.</p>
+    <div class="q-emblems" id="emblemRow" aria-hidden="true"></div>
+    <button class="btn q-start" id="startBtn">Start the quiz →</button>
+    <div class="q-meta">8 questions · about 60 seconds · 8 possible ancestors</div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz" hidden>
+    <div class="q-progress">
+      <span class="q-count" id="qCount">01 / 08</span>
+      <div class="q-track"><div class="q-fill" id="qFill"></div></div>
+    </div>
+    <div class="q-card" id="qCard">
+      <div class="q-num" id="qNum">Question 1</div>
+      <h2 class="q-text" id="qText"></h2>
+      <div class="q-opts" id="qOpts"></div>
+      <button class="q-back" id="backBtn" hidden>← Previous question</button>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section id="result" hidden>
+    <div class="q-result">
+      <div class="r-top" id="rTop">
+        <div class="confetti" id="confetti" aria-hidden="true"></div>
+        <div class="r-badge" id="rBadge"></div>
+        <div class="r-kicker">You are…</div>
+        <div class="r-epithet" id="rEpithet"></div>
+        <div class="r-name" id="rName"></div>
+      </div>
+      <p class="r-blurb" id="rBlurb"></p>
+      <div class="r-facts" id="rFacts"></div>
+
+      <div class="r-share">
+        <button class="btn" id="shareBtn">Share my result</button>
+        <div class="r-sharehint" id="shareHint"></div>
+      </div>
+
+      <div class="r-ctas" id="rCtas"></div>
+
+      <div class="r-retake"><button id="retakeBtn">↻ Take the quiz again</button></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot" id="about"><div class="wrap">
+  <div>
+    <a class="brand" href="../index.html"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The Long Walk</span></a>
+    <p style="margin-top:.7rem">An interactive journey through human evolution. This quiz is just for fun — but the traits, brain sizes, dates and fossils behind each result are drawn from museum and primary sources. <a href="../index.html" style="color:var(--teal);border-bottom:1px solid color-mix(in oklab,var(--teal),transparent 60%)">Explore the full timeline →</a></p>
+  </div>
+  <p>Reconstruction portraits are interpretive illustrations.<br>Species data · Smithsonian, Natural History Museum &amp; Australian Museum<br>&copy; 2026 — for education &amp; research.</p>
+</div></footer>
+
+<!-- Shared, lightweight behaviour (theme toggle + progress), self-contained like the blog pages -->
+<script>
+(function(){
+  var r=document.documentElement;
+  var d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  var SUN='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+  var MOON='<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  var btn=document.querySelector('[data-theme-toggle]');
+  function paint(){if(btn)btn.innerHTML=d==='dark'?SUN:MOON;}
+  paint();
+  if(btn)btn.addEventListener('click',function(){d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);paint();});
+  var bar=document.querySelector('.scroll-prog');
+  if(bar){var on=function(){var h=document.documentElement;bar.style.width=(h.scrollTop/((h.scrollHeight-h.clientHeight)||1)*100)+'%';};addEventListener('scroll',on,{passive:true});on();}
+})();
+</script>
+
+<!-- Quiz engine -->
+<script>
+(function(){
+  "use strict";
+
+  /* ---- SVG emblems (simple, theme-aware line icons; no external images) ---- */
+  var ICON={
+    erectus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4.2c1.4.2 1.9 1.8 1.5 3.5C9.7 9 8.9 9.8 7.9 9.6 6.8 9.4 6.3 8.2 6.6 6.7 6.9 5.1 7.4 4 8.5 4.2Z"/><path d="M7 11.4c1.2.1 1.7.9 1.6 1.9-.1 1-.8 1.6-1.8 1.5-1-.1-1.5-.9-1.4-1.8.1-1 .6-1.7 1.6-1.6Z"/><path d="M16 9.2c1.4.2 1.9 1.8 1.5 3.5-.3 1.3-1.1 2.1-2.1 1.9-1.1-.2-1.6-1.4-1.3-2.9.3-1.6.8-2.7 1.9-2.5Z"/><path d="M14.6 16.4c1.2.1 1.7.9 1.6 1.9-.1 1-.8 1.6-1.8 1.5-1-.1-1.5-.9-1.4-1.8.1-1 .6-1.7 1.6-1.6Z"/></svg>',
+    neander:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c.6 3.2 4 4.6 4 8.4A4 4 0 0 1 8 12c0-1.6.7-2.6 1.6-3.5C11 7 11.6 5.4 12 3Z"/><path d="M12 20c1.7 0 3-1.2 3-2.9 0-1.8-1.6-2.4-1.9-4.1-.6 1.2-1.4 1.6-1.9 2.6-.4-.6-.7-1-.9-1.8-.7.8-1.4 1.6-1.4 3.3C7 18.8 10.3 20 12 20Z"/></svg>',
+    naledi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.6 5.6 6.1.7-4.5 4.1 1.2 6L12 20l-5.4 2.9 1.2-6-4.5-4.1 6.1-.7L12 2.5Z"/></svg>',
+    flores:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17.5c1.2 0 1.8-.9 3-.9s1.8.9 3 .9 1.8-.9 3-.9 1.8.9 3 .9 1.8-.9 3-.9 1.8.9 3 .9"/><path d="M5.5 14.2 9 7.5l3 4.3 2-2.8 4 5.2"/></svg>',
+    austro:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-6"/><path d="M12 15c-3.3 0-5-2-5-4.6A5 5 0 0 1 12 5a5 5 0 0 1 5 5.4C17 13 15.3 15 12 15Z"/><path d="M4 21h16"/></svg>',
+    habilis:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.4 1.2 5 4.4 5 8 0 5-2.4 9-5 9s-5-4-5-9c0-3.6 1.6-6.8 5-8Z"/><path d="M9.4 8.5 12 10m0 0 2.6-1.5M12 10v3.5"/></svg>',
+    deniso:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3c0 3 8 5 8 9s-8 6-8 9"/><path d="M16 3c0 3-8 5-8 9s8 6 8 9"/><path d="M9.5 6h5M9 9.5h6M9 14.5h6M9.5 18h5"/></svg>',
+    heidel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5"/><path d="M19 5l-.2 4.2M19 5l-4.2.2"/><path d="M8.5 15.5 6 18l-2 2"/></svg>'
+  };
+
+  /* ---- Results: blurb, real facts, accent + CTA links (paths relative to /quiz/) ---- */
+  var RESULTS={
+    erectus:{epithet:"The Trailblazer",name:"Homo erectus",rc:"#e07b3c",
+      blurb:"You're built for the long haul — restless, resilient, and always pulled toward what's over the next ridge. Like <em>Homo erectus</em>, the first human to walk out of Africa and master fire, you simply go further than everyone else and keep going. Ambition plus stamina is a rare pairing, and you've got both.",
+      facts:["Brain of 600–1,100 cc — it grew steadily across more than a million years.","Lived ~1.9 million to ~110,000 years ago: one of the longest-surviving human species ever.","The first hominin to leave Africa and likely the first to tame fire. Star fossil: the near-complete ‘Turkana Boy’."],
+      sp:"erectus",blog:{file:"homo-erectus-vs-homo-sapiens.html",label:"Homo erectus vs Homo sapiens"}},
+    neander:{epithet:"The Stalwart",name:"Neanderthal",rc:"#9b7ed0",
+      blurb:"You feel things deeply and protect your people fiercely. Like the <em>Neanderthals</em> — cold-adapted, big-brained, and famous for nursing their injured and elderly — you're tougher than you look and more tender than you let on. When the world turns harsh, you're the one others want beside them.",
+      facts:["Brain of 1,200–1,750 cc — as large as ours, and often larger.","Ruled Ice Age Europe and western Asia from ~430,000 to ~40,000 years ago.","Most people with roots outside Africa still carry about 1–2% Neanderthal DNA."],
+      sp:"neanderthalensis",blog:{file:"homo-sapiens-vs-neanderthals.html",label:"Homo sapiens vs Neanderthals"}},
+    naledi:{epithet:"The Enigma",name:"Homo naledi",rc:"#56b3a6",
+      blurb:"You don't follow the map; you go where the map runs out. Like the mysterious <em>Homo naledi</em> — a tiny-brained human that may have carried its dead deep into a pitch-black cave — you quietly defy every expectation people pin on you. Profound, a little eerie, and entirely your own.",
+      facts:["A surprisingly small brain — just 465–610 cc, about a third the size of ours.","Lived astonishingly recently (335,000–236,000 years ago), alongside the earliest Homo sapiens.","Over 1,500 fossils lay deep inside South Africa's Rising Star cave — possibly its dead, deliberately placed there."],
+      sp:"naledi",blog:{file:"homo-naledi-burial-behavior.html",label:"Did Homo naledi bury its dead?"}},
+    flores:{epithet:"The Underdog",name:"Homo floresiensis",rc:"#8bbf3e",
+      blurb:"Small but absolutely mighty. Like <em>Homo floresiensis</em> — ‘the Hobbit’, a one-metre-tall human that hunted elephants on a lost island — you punch so far above your weight it unsettles people. You don't have the most of anything except resourcefulness, and that turns out to be plenty.",
+      facts:["Stood only ~106 cm (3'6\") tall — which earned it the nickname ‘the Hobbit’.","Survived on the Indonesian island of Flores until perhaps 50,000 years ago.","Made stone tools and hunted dwarf elephants (Stegodon) despite a chimp-sized brain."],
+      sp:"floresiensis",blog:{file:"homo-floresiensis-vs-homo-erectus.html",label:"Homo floresiensis vs Homo erectus"}},
+    austro:{epithet:"The Free Spirit",name:"Australopithecus afarensis",rc:"#d6a23f",
+      blurb:"You're the steady root the rest of the family grows from. Like <em>Australopithecus afarensis</em> — ‘Lucy’, who walked upright while still at home in the trees — you live comfortably between two worlds, grounded yet endlessly adaptable. People underestimate the foundational ones. You're where it all begins.",
+      facts:["This is the species of the famous ‘Lucy’ skeleton, found in 1974.","Walked upright 3.9–2.9 million years ago — but still climbed trees to feed and sleep.","Left the Laetoli footprints: a trail of upright tracks frozen in volcanic ash 3.6 million years ago."],
+      sp:"afarensis",blog:{file:"australopithecus-afarensis-vs-africanus.html",label:"A. afarensis vs A. africanus"}},
+    habilis:{epithet:"The Maker",name:"Homo habilis",rc:"#e08a4a",
+      blurb:"Give you a problem and something to work with, and you'll figure it out. Like <em>Homo habilis</em> — ‘handy man’, named for the first deliberate stone tools — you think with your hands and turn raw materials into solutions. Practical, inventive, and quietly indispensable.",
+      facts:["Brain of 510–690 cc — a clear step up from the australopiths that came before.","Lived 2.4–1.5 million years ago; its name literally means ‘handy man’.","Linked to the Oldowan industry — among the earliest deliberate stone toolmaking."],
+      sp:"habilis",blog:{file:"homo-habilis-vs-homo-erectus.html",label:"Homo habilis vs Homo erectus"}},
+    deniso:{epithet:"The Ghost",name:"Denisovan",rc:"#46adc4",
+      blurb:"You're the quiet one whose influence turns up everywhere. Like the <em>Denisovans</em> — a whole human species we know mostly from DNA, who spread their genes from Siberia to the high Himalaya — you adapt to anything and leave a mark that outlasts you. Mysterious, unbothered, and more important than people realise.",
+      facts:["An entire human species first identified from DNA in a single fingertip bone (2010).","Ranged from the cold of Siberia to the thin air of the Tibetan Plateau, ~200,000–30,000 years ago.","Gave living Tibetans the EPAS1 gene variant that lets them thrive at high altitude."],
+      sp:"denisovans",blog:{file:"denisovans-finger-bone.html",label:"The Denisovan finger bone"}},
+    heidel:{epithet:"The Mastermind",name:"Homo heidelbergensis",rc:"#e0664a",
+      blurb:"You see the whole board. Like <em>Homo heidelbergensis</em> — big-brained makers of finely crafted throwing spears and coordinated big-game hunts, and very likely the ancestor of Neanderthals, Denisovans and us — you plan three moves ahead and rally people to pull it off. A natural architect of whatever you touch.",
+      facts:["Big brain of 1,100–1,400 cc, overlapping the modern human range.","Crafted the Schöningen spears ~300,000 years ago: finely balanced wooden throwing weapons.","Widely seen as the common ancestor of Neanderthals, Denisovans and Homo sapiens."],
+      sp:"heidelbergensis",blog:{file:"homo-heidelbergensis-vs-neanderthals.html",label:"Homo heidelbergensis vs Neanderthals"}}
+  };
+
+  /* Tie-break priority: favour the rarer / more surprising results first */
+  var TIEBREAK=["naledi","deniso","flores","habilis","heidel","austro","neander","erectus"];
+
+  /* ---- 8 questions. Each option awards points to one or more result species. ---- */
+  var QUESTIONS=[
+    {q:"Your ideal weekend involves…",o:[
+      {t:"Chasing a horizon you've never seen — pack light, just go.",p:{erectus:2,deniso:1}},
+      {t:"A cozy night in with your favourite people and a crackling fire.",p:{neander:2,austro:1}},
+      {t:"Tinkering in the workshop, building or fixing something by hand.",p:{habilis:2}},
+      {t:"Wandering off alone to somewhere quiet and a little eerie.",p:{naledi:2}},
+      {t:"Hosting the whole crew and wrangling it into an actual plan.",p:{heidel:2}}
+    ]},
+    {q:"A real threat shows up. Your gut says…",o:[
+      {t:"Plant your feet and protect your people, whatever it costs.",p:{neander:2}},
+      {t:"Adapt — read it, blend in, outlast it on your own terms.",p:{deniso:2,austro:1}},
+      {t:"Outsmart it with a clever trick or the right little tool.",p:{flores:2,habilis:1}},
+      {t:"Get everyone together and coordinate a plan of action.",p:{heidel:2}},
+      {t:"Keep moving — cover ground, find safer territory.",p:{erectus:2}}
+    ]},
+    {q:"Stranded on a desert island, the one tool you'd want:",o:[
+      {t:"A trusty hand-axe — one tool, a hundred jobs.",p:{erectus:2,habilis:1}},
+      {t:"A razor-sharp flake you struck yourself.",p:{habilis:2}},
+      {t:"A balanced wooden spear you carved with care.",p:{heidel:2}},
+      {t:"A fire-making kit — warmth, cooked food, safety till dawn.",p:{neander:2}},
+      {t:"Just some cord and your wits — you'll rig up the rest.",p:{flores:2}}
+    ]},
+    {q:"Your social style is…",o:[
+      {t:"A tight inner circle you'd do anything for.",p:{neander:2}},
+      {t:"A big network you keep organised and humming.",p:{heidel:2}},
+      {t:"A bit of a lone wolf — you genuinely like your own company.",p:{naledi:2}},
+      {t:"Easygoing and adaptable; you slot into any group.",p:{austro:2}},
+      {t:"The friendly wanderer who makes friends everywhere they roam.",p:{erectus:1,deniso:1}}
+    ]},
+    {q:"A brand-new challenge lands in your lap. You…",o:[
+      {t:"Dive in and tinker until it clicks.",p:{habilis:2}},
+      {t:"Hang back, adapt, and find the quiet angle that works for you.",p:{deniso:2,austro:1}},
+      {t:"Map out a careful plan before touching anything.",p:{heidel:2}},
+      {t:"Grind at it with pure stamina until it gives.",p:{erectus:2}},
+      {t:"Improvise something scrappy from whatever's lying around.",p:{flores:2}}
+    ]},
+    {q:"The compliment that hits hardest:",o:[
+      {t:"“You're the most loyal person I know.”",p:{neander:2}},
+      {t:"“You can make anything work with nothing.”",p:{flores:2,habilis:1}},
+      {t:"“You're fearless about going your own way.”",p:{naledi:2}},
+      {t:"“You'd survive literally anywhere.”",p:{deniso:2}},
+      {t:"“You're the steady one everyone leans on.”",p:{austro:2}}
+    ]},
+    {q:"Where would you most love to live?",o:[
+      {t:"On the move — a new horizon every season.",p:{erectus:2}},
+      {t:"A high, wild, remote place few people could handle.",p:{deniso:2,naledi:1}},
+      {t:"A small island world all your own.",p:{flores:2}},
+      {t:"Right by your roots, close to family and the old ways.",p:{neander:2,austro:1}},
+      {t:"Green country between forest and open plain — the best of both.",p:{austro:2}}
+    ]},
+    {q:"Your hidden superpower is…",o:[
+      {t:"Stamina — you simply outlast everyone.",p:{erectus:2}},
+      {t:"You're a born maker; your hands turn ideas into real things.",p:{habilis:2}},
+      {t:"You go places — in your head and on the map — that others fear.",p:{naledi:2}},
+      {t:"You're the calm, steady root a whole group grows around.",p:{austro:2}},
+      {t:"You see the whole board and plan three moves ahead.",p:{heidel:2}}
+    ]}
+  ];
+
+  var SHARE_URL="https://homininhistory.com/quiz/";
+
+  /* ---- State ---- */
+  var idx=0, picks=[], el={};
+  function $(id){return document.getElementById(id);}
+
+  function scoreFrom(answers){
+    var s={erectus:0,neander:0,naledi:0,flores:0,austro:0,habilis:0,deniso:0,heidel:0};
+    answers.forEach(function(oi,qi){
+      if(oi==null) return;
+      var p=QUESTIONS[qi].o[oi].p;
+      for(var k in p) s[k]+=p[k];
+    });
+    return s;
+  }
+  function winnerFrom(answers){
+    var s=scoreFrom(answers), best=-1, win=TIEBREAK[0];
+    TIEBREAK.forEach(function(k){ if(s[k]>best){best=s[k];win=k;} });
+    return win;
+  }
+
+  /* ---- Screens ---- */
+  function show(name){
+    ["intro","quiz","result"].forEach(function(n){ $(n).hidden = (n!==name); });
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+
+  function renderEmblems(){
+    var row=$("emblemRow"), html="";
+    ["erectus","neander","heidel","naledi","deniso","flores","habilis","austro"].forEach(function(k){
+      html+='<span style="color:'+RESULTS[k].rc+'">'+ICON[k]+'</span>';
+    });
+    row.innerHTML=html;
+  }
+
+  function renderQuestion(){
+    var Q=QUESTIONS[idx], n=idx+1, total=QUESTIONS.length;
+    $("qCount").textContent=("0"+n).slice(-2)+" / "+("0"+total).slice(-2);
+    $("qFill").style.width=(n/total*100)+"%";
+    $("qNum").textContent="Question "+n;
+    $("qText").textContent=Q.q;
+    var box=$("qOpts"); box.innerHTML="";
+    Q.o.forEach(function(opt,i){
+      var b=document.createElement("button");
+      b.className="q-opt"+(picks[idx]===i?" picked":"");
+      b.innerHTML='<span class="lt">'+String.fromCharCode(65+i)+'</span><span>'+opt.t+'</span>';
+      b.addEventListener("click",function(){ choose(i); });
+      box.appendChild(b);
+    });
+    $("backBtn").hidden = idx===0;
+    // restart the entry animation
+    var card=$("qCard"); card.style.animation="none"; void card.offsetWidth; card.style.animation="";
+  }
+
+  function choose(i){
+    picks[idx]=i;
+    var btns=$("qOpts").children;
+    for(var b=0;b<btns.length;b++) btns[b].classList.toggle("picked", b===i);
+    setTimeout(function(){
+      if(idx<QUESTIONS.length-1){ idx++; renderQuestion(); }
+      else finish();
+    },230);
+  }
+
+  function back(){ if(idx>0){ idx--; renderQuestion(); } }
+
+  function finish(){ showResult(winnerFrom(picks), true); }
+
+  function renderResult(key){
+    var R=RESULTS[key];
+    var top=$("rTop"); top.style.setProperty("--rc",R.rc);
+    $("rBadge").innerHTML=ICON[key];
+    $("rEpithet").textContent=R.epithet;
+    $("rName").textContent=R.name;
+    $("rBlurb").innerHTML=R.blurb;
+
+    var icons=["🧠","🗺️","🦴"]; // brain, map, bone
+    $("rFacts").innerHTML=R.facts.map(function(f,i){
+      return '<div class="r-fact"><span class="fi">'+icons[i%icons.length]+'</span><span>'+f+'</span></div>';
+    }).join("");
+
+    $("rCtas").innerHTML=
+      '<a class="r-cta" href="../species.html#'+R.sp+'"><span class="k">Full species report</span><span class="v">Meet '+R.name+' →</span></a>'+
+      '<a class="r-cta" href="../blog/'+R.blog.file+'"><span class="k">Go deeper</span><span class="v">'+R.blog.label+' →</span></a>'+
+      '<a class="r-cta tree" href="../index.html#timeline"><span><span class="k">See where you fit</span><span class="v" style="display:block">Explore the interactive family tree</span></span><span aria-hidden="true" style="font-size:1.3rem;color:var(--rc)">→</span></a>';
+
+    $("shareHint").textContent="";
+    $("shareHint").classList.remove("ok");
+    $("shareBtn").dataset.key=key;
+  }
+
+  function showResult(key,celebrate){
+    if(!RESULTS[key]) key=TIEBREAK[0];
+    renderResult(key);
+    show("result");
+    try{ history.replaceState(null,"","?r="+key); }catch(e){}
+    if(celebrate) burst(RESULTS[key].rc);
+  }
+
+  function burst(color){
+    if(matchMedia("(prefers-reduced-motion:reduce)").matches) return;
+    var c=$("confetti"); c.innerHTML="";
+    var cols=[color,"var(--gold)","var(--teal)","#ece1cd"];
+    for(var i=0;i<26;i++){
+      var s=document.createElement("i");
+      s.style.left=(Math.random()*100)+"%";
+      s.style.background=cols[i%cols.length];
+      s.style.animationDelay=(Math.random()*.3)+"s";
+      s.style.transform="translateY(-10px)";
+      c.appendChild(s);
+    }
+    setTimeout(function(){ c.innerHTML=""; },2000);
+  }
+
+  function shareResult(){
+    var key=$("shareBtn").dataset.key, R=RESULTS[key];
+    var text="I'm "+R.epithet+" — "+R.name+"! 🦴 Which ancient human are you?";
+    var url=SHARE_URL+"?r="+key;
+    var hint=$("shareHint");
+    if(navigator.share){
+      navigator.share({title:"Which Hominin Are You?",text:text,url:url}).then(function(){
+        hint.textContent="Thanks for sharing!"; hint.classList.add("ok");
+      }).catch(function(){});
+      return;
+    }
+    var payload=text+" "+url;
+    function done(){ hint.textContent="Copied! Paste it anywhere to share."; hint.classList.add("ok"); }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(payload).then(done).catch(fallback);
+    } else fallback();
+    function fallback(){
+      var ta=document.createElement("textarea"); ta.value=payload;
+      ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select();
+      try{ document.execCommand("copy"); done(); }
+      catch(e){ hint.textContent="Copy this: "+payload; }
+      document.body.removeChild(ta);
+    }
+  }
+
+  function start(){ idx=0; picks=[]; try{history.replaceState(null,"",location.pathname);}catch(e){} show("quiz"); renderQuestion(); }
+
+  /* ---- Wire up ---- */
+  document.addEventListener("DOMContentLoaded",function(){
+    renderEmblems();
+    $("startBtn").addEventListener("click",start);
+    $("backBtn").addEventListener("click",back);
+    $("shareBtn").addEventListener("click",shareResult);
+    $("retakeBtn").addEventListener("click",start);
+
+    // Deep link straight to a shared result, e.g. /quiz/?r=neander
+    var m=(location.search.match(/[?&]r=([a-z]+)/i)||[])[1];
+    if(m && RESULTS[m]) showResult(m,false);
+  });
+
+  // Exposed for automated balance-checking only
+  window.__QUIZ={QUESTIONS:QUESTIONS,RESULTS:RESULTS,TIEBREAK:TIEBREAK,winnerFrom:winnerFrom,scoreFrom:scoreFrom};
+})();
+</script>
+</body>
+</html>

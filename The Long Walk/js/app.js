@@ -10,7 +10,7 @@
   const MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 
   function buildNav(active){
-    const links = [["index.html","Timeline"],["migration.html","Migrations"],["proteins.html","Molecules"],["blog/index.html","Articles"],["#about","About"]];
+    const links = [["index.html","Timeline"],["migration.html","Migrations"],["proteins.html","Molecules"],["blog/index.html","Articles"],["quiz/index.html","Quiz"],["#about","About"]];
     const nav = document.createElement('header');
     nav.className='nav';
     nav.innerHTML = `<div class="wrap nav-in">
@@ -28,6 +28,7 @@
       <div>
         <a class="brand" href="index.html">${LOGO}<span>The Long Walk</span></a>
         <p style="margin-top:.7rem">An interactive journey through human evolution and the genomic record of where our species travelled. Built as a science-communication project — species accounts from museum and primary sources; migration analysis computed from the Allen Ancient DNA Resource (AADR v66.p1).</p>
+        <p style="margin-top:.7rem"><a href="quiz/index.html" style="color:var(--accent);font-weight:600">Which Hominin Are You? Take the quiz →</a></p>
       </div>
       <p>Reconstruction portraits are interpretive illustrations.<br>Data &middot; AADR / Harvard Dataverse &middot; doi:10.7910/DVN/FFIDCW<br>&copy; ${new Date().getFullYear()} — for education & research.</p>
     </div>`;
