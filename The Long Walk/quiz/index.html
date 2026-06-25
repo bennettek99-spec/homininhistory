@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Which Hominin Are You? — A Human-Evolution Personality Quiz | The Long Walk</title>
-<meta name="description" content="Answer 8 quick questions and discover which ancient human you really are — Neanderthal, Homo erectus, the Hobbit, a Denisovan and more. Fun, fast, and grounded in real science.">
+<meta name="description" content="Answer 10 quick questions and discover which ancient human you really are — Neanderthal, Homo erectus, the Hobbit, a Denisovan and more. Fun, fast, and grounded in real science.">
 <link rel="canonical" href="https://homininhistory.com/quiz/index.html">
 <meta name="theme-color" content="#16110b">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Which Hominin Are You?">
-<meta property="og:description" content="Take the 8-question quiz and find out which ancient human you are — from loyal Neanderthal to globe-trotting Homo erectus.">
+<meta property="og:description" content="Take the 10-question quiz and find out which ancient human you are — from loyal Neanderthal to globe-trotting Homo erectus.">
 <meta property="og:url" content="https://homininhistory.com/quiz/">
 <meta property="og:site_name" content="The Long Walk">
 <meta property="og:image" content="https://homininhistory.com/assets/img/hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Which Hominin Are You?">
-<meta name="twitter:description" content="8 questions. 8 ancient humans. Which one are you?">
+<meta name="twitter:description" content="10 questions. 10 ancient humans. Which one are you?">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..600&family=Work+Sans:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
@@ -135,16 +135,16 @@
   <section id="intro" class="q-intro">
     <div class="eyebrow" style="display:flex">A Long Walk diversion</div>
     <h1>Which <em>Hominin</em><br>Are You?</h1>
-    <p class="lede">Eight questions stand between you and the truth about which ancient human you really are. Built for fun — but every result is grounded in the real fossil record.</p>
+    <p class="lede">Ten questions stand between you and the truth about which ancient human you really are. Built for fun — but every result is grounded in the real fossil record.</p>
     <div class="q-emblems" id="emblemRow" aria-hidden="true"></div>
     <button class="btn q-start" id="startBtn">Start the quiz →</button>
-    <div class="q-meta">8 questions · about 60 seconds · 8 possible ancestors</div>
+    <div class="q-meta">10 questions · about 90 seconds · 10 possible ancestors</div>
   </section>
 
   <!-- QUIZ -->
   <section id="quiz" hidden>
     <div class="q-progress">
-      <span class="q-count" id="qCount">01 / 08</span>
+      <span class="q-count" id="qCount">01 / 10</span>
       <div class="q-track"><div class="q-fill" id="qFill"></div></div>
     </div>
     <div class="q-card" id="qCard">
@@ -220,7 +220,9 @@
     austro:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21v-6"/><path d="M12 15c-3.3 0-5-2-5-4.6A5 5 0 0 1 12 5a5 5 0 0 1 5 5.4C17 13 15.3 15 12 15Z"/><path d="M4 21h16"/></svg>',
     habilis:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.4 1.2 5 4.4 5 8 0 5-2.4 9-5 9s-5-4-5-9c0-3.6 1.6-6.8 5-8Z"/><path d="M9.4 8.5 12 10m0 0 2.6-1.5M12 10v3.5"/></svg>',
     deniso:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3c0 3 8 5 8 9s-8 6-8 9"/><path d="M16 3c0 3-8 5-8 9s8 6 8 9"/><path d="M9.5 6h5M9 9.5h6M9 14.5h6M9.5 18h5"/></svg>',
-    heidel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5"/><path d="M19 5l-.2 4.2M19 5l-4.2.2"/><path d="M8.5 15.5 6 18l-2 2"/></svg>'
+    heidel:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19 19 5"/><path d="M19 5l-.2 4.2M19 5l-4.2.2"/><path d="M8.5 15.5 6 18l-2 2"/></svg>',
+    paranth:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 7.5C6.5 5 8.5 3.2 12 3.2s5.5 1.8 5.5 4.3c0 1.8-.7 2.8-1.2 4.6-.5 1.8-.6 4.2-1.6 4.2-1 0-1-2.2-2.7-2.2s-1.7 2.2-2.7 2.2c-1 0-1.1-2.4-1.6-4.2C7.2 10.3 6.5 9.3 6.5 7.5Z"/><path d="M9.4 7.1c.9.6 4.3.6 5.2 0"/></svg>',
+    sapiens:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M12 1.6v1.5M16.6 3.4l-.9 1.2M19.2 8h-1.5M7.3 4.6l-.9-1.2M4.8 8h1.5"/><path d="M8.4 20.2c0-2.4 1.6-4 3.6-4s3.6 1.6 3.6 4"/></svg>'
   };
 
   /* ---- Results: blurb, real facts, accent + CTA links (paths relative to /quiz/) ---- */
@@ -256,11 +258,19 @@
     heidel:{epithet:"The Mastermind",name:"Homo heidelbergensis",rc:"#e0664a",
       blurb:"You see the whole board. Like <em>Homo heidelbergensis</em> — big-brained makers of finely crafted throwing spears and coordinated big-game hunts, and very likely the ancestor of Neanderthals, Denisovans and us — you plan three moves ahead and rally people to pull it off. A natural architect of whatever you touch.",
       facts:["Big brain of 1,100–1,400 cc, overlapping the modern human range.","Crafted the Schöningen spears ~300,000 years ago: finely balanced wooden throwing weapons.","Widely seen as the common ancestor of Neanderthals, Denisovans and Homo sapiens."],
-      sp:"heidelbergensis",blog:{file:"homo-heidelbergensis-vs-neanderthals.html",label:"Homo heidelbergensis vs Neanderthals"}}
+      sp:"heidelbergensis",blog:{file:"homo-heidelbergensis-vs-neanderthals.html",label:"Homo heidelbergensis vs Neanderthals"}},
+    paranth:{epithet:"The Powerhouse",name:"Paranthropus boisei",rc:"#b5703a",
+      blurb:"You commit — fully, stubbornly, completely. Like <em>Paranthropus boisei</em>, the ‘Nutcracker Man’ whose colossal jaws and crested skull could crush what nothing else would touch, you double down where others quit and own the thing that's yours. Specialists don't spread thin — they go unmatched.",
+      facts:["A jaw built for power: the biggest molars and thickest tooth enamel of any hominin — hence the nickname ‘Nutcracker Man’.","Lived ~2.3–1.2 million years ago in East Africa, its huge chewing muscles anchored to a bony crest along the top of the skull.","Brain of ~475–545 cc; a committed specialist on tough, fibrous plants — a strategy that made it formidable, then left it behind."],
+      sp:"paranthropus",blog:{file:"paranthropus-boisei-vs-robustus.html",label:"P. boisei vs P. robustus"}},
+    sapiens:{epithet:"The Storyteller",name:"Homo sapiens",rc:"#5b86d6",
+      blurb:"You live in worlds that don't exist yet — then you talk everyone into building them. Like <em>Homo sapiens</em>, the only hominin to paint caves, trade across continents and bind strangers together with a shared story, your real superpower is imagination made contagious. You don't just adapt to the world; you rewrite it.",
+      facts:["Brain of ~1,300–1,400 cc, wired for language, symbolism and runaway imagination.","Emerged in Africa by ~300,000 years ago — the oldest known fossils come from Jebel Irhoud, Morocco.","The only hominin to make representational art, sew fitted clothing and build trade networks spanning hundreds of kilometres."],
+      sp:"sapiens",blog:{file:"archaic-vs-modern-homo-sapiens.html",label:"Archaic vs modern Homo sapiens"}}
   };
 
   /* Tie-break priority: favour the rarer / more surprising results first */
-  var TIEBREAK=["naledi","deniso","flores","habilis","heidel","austro","neander","erectus"];
+  var TIEBREAK=["naledi","deniso","paranth","flores","habilis","heidel","austro","neander","sapiens","erectus"];
 
   /* ---- 8 questions. Each option awards points to one or more result species. ---- */
   var QUESTIONS=[
@@ -269,14 +279,16 @@
       {t:"A cozy night in with your favourite people and a crackling fire.",p:{neander:2,austro:1}},
       {t:"Tinkering in the workshop, building or fixing something by hand.",p:{habilis:2}},
       {t:"Wandering off alone to somewhere quiet and a little eerie.",p:{naledi:2}},
-      {t:"Hosting the whole crew and wrangling it into an actual plan.",p:{heidel:2}}
+      {t:"Hosting the whole crew and wrangling it into an actual plan.",p:{heidel:2}},
+      {t:"Losing yourself in a great story, a sketchbook, or a wild daydream.",p:{sapiens:2}}
     ]},
     {q:"A real threat shows up. Your gut says…",o:[
       {t:"Plant your feet and protect your people, whatever it costs.",p:{neander:2}},
       {t:"Adapt — read it, blend in, outlast it on your own terms.",p:{deniso:2,austro:1}},
       {t:"Outsmart it with a clever trick or the right little tool.",p:{flores:2,habilis:1}},
       {t:"Get everyone together and coordinate a plan of action.",p:{heidel:2}},
-      {t:"Keep moving — cover ground, find safer territory.",p:{erectus:2}}
+      {t:"Keep moving — cover ground, find safer territory.",p:{erectus:2}},
+      {t:"Stand like a wall — immovable, unbreakable, pure stubborn force.",p:{paranth:2}}
     ]},
     {q:"Stranded on a desert island, the one tool you'd want:",o:[
       {t:"A trusty hand-axe — one tool, a hundred jobs.",p:{erectus:2,habilis:1}},
@@ -290,7 +302,8 @@
       {t:"A big network you keep organised and humming.",p:{heidel:2}},
       {t:"A bit of a lone wolf — you genuinely like your own company.",p:{naledi:2}},
       {t:"Easygoing and adaptable; you slot into any group.",p:{austro:2}},
-      {t:"The friendly wanderer who makes friends everywhere they roam.",p:{erectus:1,deniso:1}}
+      {t:"The friendly wanderer who makes friends everywhere they roam.",p:{erectus:1,deniso:1}},
+      {t:"A sprawling web of people held together by shared stories and ideas.",p:{sapiens:2}}
     ]},
     {q:"A brand-new challenge lands in your lap. You…",o:[
       {t:"Dive in and tinker until it clicks.",p:{habilis:2}},
@@ -302,6 +315,7 @@
     {q:"The compliment that hits hardest:",o:[
       {t:"“You're the most loyal person I know.”",p:{neander:2}},
       {t:"“You can make anything work with nothing.”",p:{flores:2,habilis:1}},
+      {t:"“You see things the rest of us can't even imagine.”",p:{sapiens:2}},
       {t:"“You're fearless about going your own way.”",p:{naledi:2}},
       {t:"“You'd survive literally anywhere.”",p:{deniso:2}},
       {t:"“You're the steady one everyone leans on.”",p:{austro:2}}
@@ -311,14 +325,30 @@
       {t:"A high, wild, remote place few people could handle.",p:{deniso:2,naledi:1}},
       {t:"A small island world all your own.",p:{flores:2}},
       {t:"Right by your roots, close to family and the old ways.",p:{neander:2,austro:1}},
-      {t:"Green country between forest and open plain — the best of both.",p:{austro:2}}
+      {t:"Green country between forest and open plain — the best of both.",p:{austro:2}},
+      {t:"One rich patch you know inside-out, where nothing out-competes you.",p:{paranth:2}}
     ]},
     {q:"Your hidden superpower is…",o:[
       {t:"Stamina — you simply outlast everyone.",p:{erectus:2}},
       {t:"You're a born maker; your hands turn ideas into real things.",p:{habilis:2}},
       {t:"You go places — in your head and on the map — that others fear.",p:{naledi:2}},
       {t:"You're the calm, steady root a whole group grows around.",p:{austro:2}},
-      {t:"You see the whole board and plan three moves ahead.",p:{heidel:2}}
+      {t:"You see the whole board and plan three moves ahead.",p:{heidel:2}},
+      {t:"Sheer force — you grind through what stops everyone else.",p:{paranth:2}}
+    ]},
+    {q:"Which of these sounds most like your kind of genius?",o:[
+      {t:"Imagining things that don't exist yet — then giving them to the world.",p:{sapiens:2}},
+      {t:"Mastering one craft so completely that no one can match you.",p:{paranth:2}},
+      {t:"Reading any room and adapting until you belong.",p:{deniso:2,austro:1}},
+      {t:"Building the tool or trick that makes a hard thing easy.",p:{habilis:2,heidel:1}},
+      {t:"Outlasting everyone through sheer, quiet endurance.",p:{erectus:2}}
+    ]},
+    {q:"When people describe you, the word that comes up most is…",o:[
+      {t:"Visionary.",p:{sapiens:2}},
+      {t:"Unstoppable.",p:{paranth:2,erectus:1}},
+      {t:"Loyal.",p:{neander:2}},
+      {t:"Fearless.",p:{naledi:2,flores:1}},
+      {t:"Strategic.",p:{heidel:2}}
     ]}
   ];
 
@@ -329,7 +359,7 @@
   function $(id){return document.getElementById(id);}
 
   function scoreFrom(answers){
-    var s={erectus:0,neander:0,naledi:0,flores:0,austro:0,habilis:0,deniso:0,heidel:0};
+    var s={erectus:0,neander:0,naledi:0,flores:0,austro:0,habilis:0,deniso:0,heidel:0,paranth:0,sapiens:0};
     answers.forEach(function(oi,qi){
       if(oi==null) return;
       var p=QUESTIONS[qi].o[oi].p;
@@ -351,7 +381,7 @@
 
   function renderEmblems(){
     var row=$("emblemRow"), html="";
-    ["erectus","neander","heidel","naledi","deniso","flores","habilis","austro"].forEach(function(k){
+    ["erectus","neander","heidel","sapiens","naledi","deniso","paranth","flores","habilis","austro"].forEach(function(k){
       html+='<span style="color:'+RESULTS[k].rc+'">'+ICON[k]+'</span>';
     });
     row.innerHTML=html;
