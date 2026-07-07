@@ -254,3 +254,12 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 
 /* progress bar */
 .scroll-prog{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:60;transition:width 80ms linear}
+
+/* blog post hero image + FAQ (added for image + FAQ-schema pass) */
+.post-hero{margin:1.7rem 0 2rem;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-sm)}
+.post-hero img{display:block;width:100%;height:auto}
+.post-hero figcaption{padding:.6rem 1rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.02em;color:var(--ink-faint);border-top:1px solid var(--line)}
+.faq{margin-top:2.8rem;padding-top:1.6rem;border-top:1px solid var(--line)}
+.faq-item{margin:1.2rem 0}
+.faq-item h3{font-family:var(--font-display);font-size:1.12rem;font-weight:560;color:var(--ink);margin:0 0 .35rem}
+.faq-item p{margin:0;color:var(--ink-muted);max-width:74ch}
