@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7109380219119136"
+     crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hominin Fossil Sites Map — The Long Walk</title>
+<meta name="description" content="An interactive world map of the most important hominin fossil and archaeological sites — from Lucy at Hadar to the Denisova Cave — each linked to the full story.">
+<link rel="canonical" href="https://homininhistory.com/fossils.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hominin Fossil Sites Map — The Long Walk">
+<meta property="og:description" content="An interactive world map of the most important hominin fossil and archaeological sites, each linked to the full story.">
+<meta property="og:url" content="https://homininhistory.com/fossils.html"><meta property="og:image" content="https://homininhistory.com/assets/og/fossils.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Hominin Fossil Sites Map"><meta name="twitter:image" content="https://homininhistory.com/assets/og/fossils.png">
+<meta property="og:site_name" content="The Long Walk">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..600&family=Work+Sans:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🗺️</text></svg>">
+<style>
+  .pp-link{display:inline-block;margin-top:.2rem;font-family:var(--font-mono);font-size:.78rem;color:var(--accent);font-weight:600}
+  .site-list{columns:2;column-gap:2rem;margin-top:1rem;max-width:70ch}
+  .site-list a{display:block;padding:.25rem 0;font-size:.92rem;break-inside:avoid}
+  @media(max-width:560px){.site-list{columns:1}}
+</style>
+</head>
+<body>
+<main>
+  <section class="banner">
+    <div class="wrap" style="padding-block:clamp(2.6rem,7vw,4.4rem);max-width:820px">
+      <div class="eyebrow">Interactive map</div>
+      <h1 style="font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:540;line-height:1.05">The world's great <em style="color:var(--accent);font-style:italic">fossil sites</em></h1>
+      <p class="lede" style="font-size:clamp(1.05rem,2.2vw,1.26rem);color:var(--ink-muted);margin-top:1.2rem">Almost everything we know about human evolution comes from a scatter of caves, gorges and lake beds. Explore the places that produced the fossils — each pin opens the full story.</p>
+    </div>
+  </section>
+
+  <section class="wrap" id="atlas">
+    <div class="sec-head reveal">
+      <span class="kicker">Interactive atlas</span>
+      <h2>Where the bones were found</h2>
+      <p>Pins are coloured by the kind of hominin each site is famous for. Toggle a category on or off, click a pin for the highlights, then follow the link to read more. Click the map to enable scroll-zoom.</p>
+    </div>
+    <div class="map-toolbar reveal">
+      <button class="toggle" data-layer="early" aria-pressed="true"><span class="dot" style="background:#9a6a2f"></span>Early hominins &amp; australopiths</button>
+      <button class="toggle" data-layer="homo" aria-pressed="true"><span class="dot" style="background:#b4531f"></span>Homo erectus &amp; early Homo</button>
+      <button class="toggle" data-layer="archaic" aria-pressed="true"><span class="dot" style="background:#3a6b8f"></span>Neanderthals &amp; Denisovans</button>
+      <button class="toggle" data-layer="sapiens" aria-pressed="true"><span class="dot" style="background:#2f6f6a"></span>Homo sapiens &amp; symbolic sites</button>
+    </div>
+    <div id="map"></div>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section class="wrap" id="why">
+    <div class="sec-head reveal">
+      <span class="kicker">Why the map looks like this</span>
+      <h2>A biased scatter of luck and preservation</h2>
+      <p>Fossils only survive where geology cooperates — alkaline caves, volcanic ash, drying lake margins. East Africa's Rift Valley and South Africa's dolomite caves dominate the early record; Europe's limestone caves over-represent the Neanderthals. The blank spaces on this map are as much about preservation and excavation history as about where our ancestors actually lived.</p>
+    </div>
+    <p style="color:var(--ink-muted)">Prefer a list? Every mapped site links to a fuller account:</p>
+    <div class="site-list">
+      <a class="inl" href="blog/laetoli-vs-hadar.html">Hadar &amp; Laetoli — Lucy and the footprints</a>
+      <a class="inl" href="blog/olduvai-gorge-vs-lake-turkana.html">Olduvai Gorge &amp; Lake Turkana</a>
+      <a class="inl" href="blog/rising-star-vs-sterkfontein.html">Rising Star &amp; Sterkfontein</a>
+      <a class="inl" href="blog/dmanisi-vs-atapuerca.html">Dmanisi &amp; Atapuerca</a>
+      <a class="inl" href="blog/zhoukoudian-vs-dmanisi.html">Zhoukoudian &amp; Dmanisi</a>
+      <a class="inl" href="blog/sima-de-los-huesos-vs-denisova-cave.html">Sima de los Huesos &amp; Denisova Cave</a>
+      <a class="inl" href="blog/jebel-irhoud-vs-omo-kibish.html">Jebel Irhoud &amp; Omo Kibish</a>
+      <a class="inl" href="blog/blombos-vs-sibudu.html">Blombos &amp; Sibudu caves</a>
+      <a class="inl" href="blog/lascaux-vs-chauvet.html">Lascaux &amp; Chauvet</a>
+      <a class="inl" href="blog/venus-figurines.html">Hohle Fels &amp; the Venus figurines</a>
+    </div>
+  </section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="js/app.js"></script>
+<script src="js/fossils.js"></script>
+<script>SITE.init('fossils.html');</script>
+</body>
+</html>
