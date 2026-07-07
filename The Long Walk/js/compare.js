@@ -37,11 +37,11 @@
 
   function figure(s,x,maxCm){
     const e=EXTRA[s.id]||{}; const cm=e.cm||120;
-    const h=Math.round(cm/maxCm*300);
+    const pct=Math.round(cm/maxCm*100); // % of the (responsive) wrapper height; width follows via aspect-ratio
     const img=`assets/img/${s.img}`;
     return `<div class="cmp-fig">
       <img class="cmp-portrait" src="${img}" alt="${esc(fullName(s))} reconstruction">
-      <div class="cmp-sil-wrap"><div class="cmp-sil" style="height:${h}px;color:${s.accent||'var(--accent)'}${e.est?';opacity:.55':''}">${SIL}</div></div>
+      <div class="cmp-sil-wrap"><div class="cmp-sil" style="height:${pct}%;color:${s.accent||'var(--accent)'}${e.est?';opacity:.55':''}">${SIL}</div></div>
       <div class="cmp-h">${e.est?'~':''}${cm} cm${e.est?' (est.)':''}</div>
       <div class="cmp-name"><em>${esc(fullName(s))}</em></div>
     </div>`;

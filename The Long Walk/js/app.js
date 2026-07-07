@@ -10,7 +10,7 @@
   const MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 
   function buildNav(active){
-    const links = [["index.html","Timeline"],["migration.html","Migrations"],["compare.html","Compare"],["fossils.html","Fossil Sites"],["proteins.html","Molecules"],["blog/index.html","Articles"],["quiz/index.html","Quiz"]];
+    const links = [["index.html","Timeline"],["migration.html","Migrations"],["compare.html","Compare"],["fossils.html","Fossil Sites"],["proteins.html","Molecules"],["blog/index.html","Articles"],["quiz/index.html","Quiz"],["about.html","About"]];
     const nav = document.createElement('header');
     nav.className='nav';
     nav.innerHTML = `<div class="wrap nav-in">
