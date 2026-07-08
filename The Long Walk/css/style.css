@@ -251,6 +251,9 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 .site-foot .wrap{display:flex;flex-wrap:wrap;gap:1.4rem;justify-content:space-between;align-items:center}
 .site-foot p{font-size:.84rem;color:var(--ink-faint);max-width:60ch}
 .site-foot .brand{font-size:1rem}
+.foot-legal{flex-basis:100%;width:100%;order:5;border-top:1px solid var(--line);margin-top:.6rem;padding-top:1.1rem;display:flex;flex-wrap:wrap;gap:.5rem 1.4rem}
+.foot-legal a{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-muted)}
+.foot-legal a:hover{color:var(--accent)}
 
 /* progress bar */
 .scroll-prog{position:fixed;top:0;left:0;height:3px;background:var(--accent);width:0;z-index:60;transition:width 80ms linear}

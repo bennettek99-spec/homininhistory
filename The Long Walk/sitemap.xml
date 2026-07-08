@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url><loc>https://homininhistory.com/</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://homininhistory.com/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://homininhistory.com/migration.html</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://homininhistory.com/compare.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://homininhistory.com/fossils.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://homininhistory.com/compare.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://homininhistory.com/fossils.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://homininhistory.com/species.html</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://homininhistory.com/proteins.html</loc><lastmod>2026-06-18</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://homininhistory.com/blog/index.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://homininhistory.com/blog/archive.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://homininhistory.com/about.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://homininhistory.com/blog/index.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://homininhistory.com/blog/archive.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://homininhistory.com/about.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://homininhistory.com/contact.html</loc><lastmod>2026-07-08</lastmod><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://homininhistory.com/privacy.html</loc><lastmod>2026-07-08</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://homininhistory.com/terms.html</loc><lastmod>2026-07-08</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://homininhistory.com/blog/what-makes-us-human.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/out-of-africa-theory-explained.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/human-family-tree-explained.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/human-evolution-timeline.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/how-do-scientists-date-fossils.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://homininhistory.com/blog/why-did-neanderthals-go-extinct.html</loc><lastmod>2026-07-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://homininhistory.com/assets/img/posts/why-did-neanderthals-go-extinct.jpg</image:loc></image:image></url>
   <url><loc>https://homininhistory.com/blog/did-humans-evolve-from-apes.html</loc><lastmod>2026-07-04</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://homininhistory.com/assets/img/posts/did-humans-evolve-from-apes.jpg</image:loc></image:image></url>
   <url><loc>https://homininhistory.com/blog/hominin-vs-hominid.html</loc><lastmod>2026-07-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://homininhistory.com/assets/img/posts/hominin-vs-hominid.jpg</image:loc></image:image></url>

@@ -31,6 +31,7 @@
         <p style="margin-top:.7rem"><a href="quiz/index.html" style="color:var(--accent);font-weight:600">Which Hominin Are You? Take the quiz →</a></p>
       </div>
       <p>Reconstruction portraits are interpretive illustrations.<br>Data &middot; AADR / Harvard Dataverse &middot; doi:10.7910/DVN/FFIDCW<br>&copy; ${new Date().getFullYear()} — for education & research.</p>
+      <nav class="foot-legal" aria-label="Legal"><a href="/about.html">About</a><a href="/contact.html">Contact</a><a href="/privacy.html">Privacy Policy</a><a href="/terms.html">Terms &amp; Disclaimer</a></nav>
     </div>`;
     document.body.appendChild(f);
   }
