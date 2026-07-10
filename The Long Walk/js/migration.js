@@ -36,7 +36,7 @@
     const items=[
       [fmt(m.n_samples),"ancient genomes analysed"],
       [fmt(m.n_clusters_total)+"+","DBSCAN population clusters"],
-      [fmt(m.n_flows),"directional flows modelled"],
+      [fmt(m.n_flows),"candidate connections scored"],
       [m.ooa_window,"samples in the 70–30 ka window"]
     ];
     document.getElementById('stat-grid').innerHTML=items.map(([n,l])=>
@@ -46,7 +46,7 @@
     const regions=Object.entries(REGION_COLORS);
     document.getElementById('legend').innerHTML=
       regions.map(([r,c])=>`<span><i style="background:${c}"></i>${r}</span>`).join('')
-      +`<span><i style="background:var(--accent);border-radius:0;width:16px;height:3px"></i>migration flow</span>`;
+      +`<span><i style="background:var(--accent);border-radius:0;width:16px;height:3px"></i>candidate connection</span>`;
   }
 
   function makeLayers(){
@@ -70,7 +70,7 @@
       L.polyline(line,{color:getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()||'#b4531f',
         weight:0.8+f.gs*2.4,opacity:.55,lineCap:'round'})
         .bindPopup(`<span class="pp-t">${f.sc} → ${f.dc}</span>`+
-          `<span class="pp-d">${bp(f.sd)} → ${bp(f.dd)} · ${f.km.toLocaleString()} km · gen-sim ${f.gs}</span>`)
+          `<span class="pp-d">${bp(f.sd)} → ${bp(f.dd)} · ${f.km.toLocaleString()} km · haplogroup-profile score ${f.gs}</span>`)
         .addTo(layers.flows);
       // arrowhead near destination
       const p2=line[line.length-1], p1=line[line.length-3]||line[0];
