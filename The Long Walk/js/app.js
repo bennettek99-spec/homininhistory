@@ -10,13 +10,22 @@
   const MOON = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
 
   function buildNav(active){
-    const links = [["index.html","Timeline"],["migration.html","Migrations"],["etruscans.html","Etruscans"],["compare.html","Compare"],["fossils.html","Fossil Sites"],["proteins.html","Molecules"],["blog/index.html","Articles"],["quiz/index.html","Quiz"],["about.html","About"]];
+    const exploreLinks = [["migration.html","Migrations"],["etruscans.html","Etruscans"],["compare.html","Compare"],["fossils.html","Fossil Sites"],["proteins.html","Molecules"]];
+    const mainLinks = [["index.html","Timeline"],["blog/index.html","Articles"],["quiz/index.html","Quiz"],["about.html","About"]];
+    const exploreActive = exploreLinks.some(([h])=>active===h);
     const nav = document.createElement('header');
     nav.className='nav';
     nav.innerHTML = `<div class="wrap nav-in">
       <a class="brand" href="index.html">${LOGO}<span>The Long Walk</span></a>
       <nav class="nav-links">
-        ${links.map(([h,t])=>`<a href="${h}" class="${active===h?'active':''}">${t}</a>`).join('')}
+        <a href="index.html" class="${active==='index.html'?'active':''}">Timeline</a>
+        <details class="nav-menu ${exploreActive?'active':''}">
+          <summary>Explore</summary>
+          <div class="nav-menu-panel">
+            ${exploreLinks.map(([h,t])=>`<a href="${h}" class="${active===h?'active':''}">${t}</a>`).join('')}
+          </div>
+        </details>
+        ${mainLinks.slice(1).map(([h,t])=>`<a href="${h}" class="${active===h?'active':''}">${t}</a>`).join('')}
         <button class="icon-btn" data-theme-toggle aria-label="Toggle theme"></button>
       </nav></div>`;
     document.body.prepend(nav);
