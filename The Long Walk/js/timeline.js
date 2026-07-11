@@ -32,7 +32,7 @@ function renderTimeline(){
         <span class="tl-node" style="border-color:${s.accent}"></span>
         <a class="card" href="species.html#${s.id}" style="--card-accent:${s.accent}" aria-label="Open report on ${s.genus} ${s.species}">
           <div class="card-row">
-            <div class="card-thumb"><img src="assets/img/${s.img}" alt="Reconstruction of ${s.genus} ${s.species}" loading="lazy"></div>
+            <div class="card-thumb species-thumb-${s.id}"><img src="assets/img/${s.img}" alt="Reconstruction of ${s.genus} ${s.species}" loading="lazy"></div>
             <div class="card-body">
               <span class="card-genus">${s.genus} ${s.species}</span>
               <h3>${s.common}</h3>
