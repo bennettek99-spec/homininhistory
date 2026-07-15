@@ -5,7 +5,7 @@ function renderSpecies(){
   let i=list.findIndex(s=>s.id===id);
   if(i<0)i=0;
   const s=list[i];
-  document.title=`${s.genus} ${s.species} — The Long Walk`;
+  document.title=`${s.genus} ${s.species} — Hominin History`;
   // chronological neighbours (oldest→youngest)
   const chrono=[...list].sort((a,b)=>b.start-a.start);
   const ci=chrono.findIndex(x=>x.id===s.id);
@@ -33,7 +33,7 @@ function renderSpecies(){
   document.getElementById('sp-main').innerHTML=`
     <section class="sp-hero" style="--sp-accent:${s.accent}">
       <div class="wrap">
-        <div style="padding-top:1.4rem"><a href="index.html" class="mono" style="font-size:.8rem;color:var(--ink-faint)">← The Long Walk timeline</a></div>
+        <div style="padding-top:1.4rem"><a href="index.html" class="mono" style="font-size:.8rem;color:var(--ink-faint)">← Hominin History timeline</a></div>
         <div class="sp-hero-grid">
           <div class="sp-portrait reveal in"><img src="assets/img/${s.img}" alt="Reconstruction of ${s.genus} ${s.species}"></div>
           <div>

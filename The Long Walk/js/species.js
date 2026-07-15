@@ -1,4 +1,4 @@
-/* The Long Walk — species dataset. Dates in years before present (BP).
+/* Hominin History — species dataset. Dates in years before present (BP).
    Content compiled from Smithsonian Human Origins, Natural History Museum (London),
    Australian Museum, and primary literature. Citations per-species in `sources`. */
 window.SPECIES = [

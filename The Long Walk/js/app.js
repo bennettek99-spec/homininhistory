@@ -16,7 +16,7 @@
     const nav = document.createElement('header');
     nav.className='nav';
     nav.innerHTML = `<div class="wrap nav-in">
-      <a class="brand" href="index.html">${LOGO}<span>The Long Walk</span></a>
+      <a class="brand" href="index.html">${LOGO}<span>Hominin History</span></a>
       <nav class="nav-links">
         <a href="index.html" class="${active==='index.html'?'active':''}">Timeline</a>
         <details class="nav-menu ${exploreActive?'active':''}">
@@ -35,7 +35,7 @@
     const f=document.createElement('footer');f.className='site-foot';f.id='about';
     f.innerHTML=`<div class="wrap">
       <div>
-        <a class="brand" href="index.html">${LOGO}<span>The Long Walk</span></a>
+        <a class="brand" href="index.html">${LOGO}<span>Hominin History</span></a>
         <p style="margin-top:.7rem">An interactive journey through human evolution and the genomic record of where our species travelled. Built as a science-communication project — species accounts from museum and primary sources; exploratory genomic maps computed from the Allen Ancient DNA Resource (AADR v66.p1).</p>
         <p style="margin-top:.7rem"><a href="quiz/index.html" style="color:var(--accent);font-weight:600">Which Hominin Are You? Take the quiz →</a></p>
       </div>
