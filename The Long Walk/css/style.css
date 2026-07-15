@@ -69,7 +69,9 @@ p{text-wrap:pretty;max-width:70ch}
 .nav-menu summary::-webkit-details-marker{display:none}
 .nav-menu summary::after{content:"";width:.42rem;height:.42rem;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-.12rem) rotate(45deg);transition:transform var(--t)}
 .nav-menu[open] summary::after{transform:translateY(.08rem) rotate(225deg)}
-.nav-menu-panel{position:absolute;right:0;top:calc(100% + .45rem);min-width:12.5rem;padding:.35rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:var(--shadow-md)}
+.nav-menu-panel{position:absolute;right:0;top:calc(100% + .45rem);display:block;min-width:12.5rem;padding:.35rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-sm);box-shadow:var(--shadow-md);opacity:0;visibility:hidden;transform:translateY(-.45rem) scale(.98);transform-origin:top right;pointer-events:none;transition:opacity 180ms ease,transform 180ms ease,visibility 180ms ease}
+.nav-menu-panel::before{content:"";position:absolute;left:0;right:0;top:-.45rem;height:.45rem}
+.nav-menu:hover .nav-menu-panel,.nav-menu:focus-within .nav-menu-panel,.nav-menu[open] .nav-menu-panel{opacity:1;visibility:visible;transform:translateY(0) scale(1);pointer-events:auto}
 .nav-menu-panel a{display:block;padding:.5rem .65rem;white-space:nowrap}
 .icon-btn{width:38px;height:38px;display:grid;place-items:center;border-radius:var(--r-sm);color:var(--ink-muted)}
 .icon-btn:hover{color:var(--accent);background:color-mix(in oklab,var(--accent),transparent 90%)}
