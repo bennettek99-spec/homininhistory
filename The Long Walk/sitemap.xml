@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url><loc>https://homininhistory.com/</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://homininhistory.com/migration.html</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://homininhistory.com/etruscans.html</loc><lastmod>2026-07-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://homininhistory.com/etruscans.html</loc><lastmod>2026-07-19</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://homininhistory.com/compare.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://homininhistory.com/fossils.html</loc><lastmod>2026-07-08</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://homininhistory.com/species.html</loc><lastmod>2026-06-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -48,4 +48,12 @@
   <url><loc>https://homininhistory.com/blog/homo-naledi-vs-australopithecus.html</loc><lastmod>2026-07-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://homininhistory.com/assets/img/posts/homo-naledi-vs-australopithecus.jpg</image:loc></image:image></url>
   <url><loc>https://homininhistory.com/blog/ardipithecus-vs-australopithecus.html</loc><lastmod>2026-02-28</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://homininhistory.com/assets/img/posts/ardipithecus-vs-australopithecus.jpg</image:loc></image:image></url>
   <url><loc>https://homininhistory.com/blog/neanderthals-vs-denisovans.html</loc><lastmod>2026-02-21</lastmod><changefreq>monthly</changefreq><priority>0.7</priority><image:image><image:loc>https://homininhistory.com/assets/img/posts/neanderthals-vs-denisovans.jpg</image:loc></image:image></url>
+  <url><loc>https://homininhistory.com/blog/what-did-neanderthals-hunt.html</loc><lastmod>2026-07-19</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/animals-homo-erectus-encountered.html</loc><lastmod>2026-07-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/predators-that-hunted-australopithecus.html</loc><lastmod>2026-07-17</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/animals-of-flores-homo-floresiensis.html</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/cave-bears-and-humans.html</loc><lastmod>2026-07-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/dwarf-elephants-sicily-cyclops.html</loc><lastmod>2026-07-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/did-other-human-species-talk.html</loc><lastmod>2026-07-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://homininhistory.com/blog/how-do-we-know-what-extinct-humans-ate.html</loc><lastmod>2026-07-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
