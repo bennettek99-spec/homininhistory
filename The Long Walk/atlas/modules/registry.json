@@ -1,0 +1,23 @@
+[
+  {
+    "id": "roh-context",
+    "path": "modules/roh-context.js",
+    "name": "ROH & consanguinity context",
+    "description": "Places an individual's runs of homozygosity against contemporaries from the same region.",
+    "scope": "both"
+  },
+  {
+    "id": "kinship",
+    "path": "modules/kinship.js",
+    "name": "Recorded kinship",
+    "description": "Surfaces the AADR curator-entered family-relations field and links to the named relatives.",
+    "scope": "individual"
+  },
+  {
+    "id": "archaic-ancestry",
+    "path": "modules/archaic-ancestry.js",
+    "name": "Archaic ancestry",
+    "description": "Per-individual Neanderthal and Denisovan ancestry fractions. Requires an external estimates file; ships disconnected.",
+    "scope": "both"
+  }
+]

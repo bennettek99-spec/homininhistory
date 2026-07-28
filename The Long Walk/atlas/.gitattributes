@@ -1,0 +1,6 @@
+# Everything under atlas/ is shipped to the browser as-is: a columnar binary,
+# a newline-delimited id index the client splits on "\n", vendored bundles and
+# generated JSON. This repo has core.autocrlf enabled, which would rewrite line
+# endings on a Windows checkout and re-commit them. Opt the whole tree out so
+# the bytes Netlify serves are exactly the bytes the build produced.
+* -text
