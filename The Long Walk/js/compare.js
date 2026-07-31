@@ -98,8 +98,8 @@
     $('tlStage').innerHTML=timeline(a,b);
     $('tableStage').innerHTML=table(a,b);
     $('links').innerHTML=
-      `<a class="btn" href="species.html#${a.id}">More on ${esc(a.genus)} ${esc(a.species)} →</a>`+
-      `<a class="btn ghost" href="species.html#${b.id}">More on ${esc(b.genus)} ${esc(b.species)} →</a>`;
+      `<a class="btn" href="species/${a.slug}.html">More on ${esc(a.genus)} ${esc(a.species)} →</a>`+
+      `<a class="btn ghost" href="species/${b.slug}.html">More on ${esc(b.genus)} ${esc(b.species)} →</a>`;
     // reflect selection in the URL for shareable comparisons
     try{history.replaceState(null,'',`?a=${a.id}&b=${b.id}`);}catch(e){}
   }

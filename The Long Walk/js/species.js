@@ -3,7 +3,7 @@
    Australian Museum, and primary literature. Citations per-species in `sources`. */
 window.SPECIES = [
 {
-  id:"sahelanthropus", genus:"Sahelanthropus", species:"tchadensis",
+  id:"sahelanthropus", slug:"sahelanthropus-tchadensis", genus:"Sahelanthropus", species:"tchadensis",
   common:"Toumaï", meaning:"“Hope of life” (Sahel ape from Chad)",
   era:"Late Miocene", start:7000000, end:6000000, dateLabel:"~7 million years ago",
   brain:"320–380 cc", height:"unknown (~chimp-sized)", region:"Djurab Desert, Chad",
@@ -39,7 +39,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"ardipithecus", genus:"Ardipithecus", species:"ramidus",
+  id:"ardipithecus", slug:"ardipithecus-ramidus", genus:"Ardipithecus", species:"ramidus",
   common:"Ardi", meaning:"“Ground/root ape”",
   era:"Pliocene", start:4400000, end:4400000, dateLabel:"~4.4 million years ago",
   brain:"300–350 cc", height:"~120 cm, ~50 kg", region:"Aramis, Middle Awash, Ethiopia",
@@ -75,7 +75,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"afarensis", genus:"Australopithecus", species:"afarensis",
+  id:"afarensis", slug:"australopithecus-afarensis", genus:"Australopithecus", species:"afarensis",
   common:"Lucy's species", meaning:"“Southern ape from Afar”",
   era:"Pliocene", start:3900000, end:2900000, dateLabel:"3.9 – 2.9 million years ago",
   brain:"380–430 cc", height:"105–150 cm", region:"Eastern Africa (Ethiopia, Tanzania, Kenya)",
@@ -112,7 +112,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"africanus", genus:"Australopithecus", species:"africanus",
+  id:"africanus", slug:"australopithecus-africanus", genus:"Australopithecus", species:"africanus",
   common:"Taung Child's species", meaning:"“Southern ape of Africa”",
   era:"Pliocene–Pleistocene", start:3300000, end:2100000, dateLabel:"3.3 – 2.1 million years ago",
   brain:"~450 cc", height:"115–140 cm", region:"Southern Africa (Sterkfontein, Taung, Makapansgat)",
@@ -149,7 +149,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"paranthropus", genus:"Paranthropus", species:"boisei",
+  id:"paranthropus", slug:"paranthropus-boisei", genus:"Paranthropus", species:"boisei",
   common:"Nutcracker Man", meaning:"“Beside-human”",
   era:"Pleistocene", start:2300000, end:1200000, dateLabel:"2.3 – 1.2 million years ago",
   brain:"500–550 cc", height:"~120–140 cm", region:"Eastern Africa (Olduvai, Turkana)",
@@ -185,7 +185,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"habilis", genus:"Homo", species:"habilis",
+  id:"habilis", slug:"homo-habilis", genus:"Homo", species:"habilis",
   common:"Handy Man", meaning:"“Handy / able man”",
   era:"Pleistocene", start:2400000, end:1500000, dateLabel:"2.4 – 1.5 million years ago",
   brain:"510–690 cc", height:"~100–135 cm", region:"Eastern & southern Africa",
@@ -221,7 +221,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"erectus", genus:"Homo", species:"erectus",
+  id:"erectus", slug:"homo-erectus", genus:"Homo", species:"erectus",
   common:"Upright Man", meaning:"“Upright man”",
   era:"Pleistocene", start:1900000, end:110000, dateLabel:"1.9 million – ~110,000 years ago",
   brain:"600–1100 cc", height:"~145–185 cm", region:"Africa, then across Asia (Java, China, Caucasus)",
@@ -259,7 +259,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"heidelbergensis", genus:"Homo", species:"heidelbergensis",
+  id:"heidelbergensis", slug:"homo-heidelbergensis", genus:"Homo", species:"heidelbergensis",
   common:"Heidelberg Man", meaning:"“Man from Heidelberg”",
   era:"Middle Pleistocene", start:700000, end:200000, dateLabel:"~700,000 – 200,000 years ago",
   brain:"1100–1400 cc", height:"~157–175 cm", region:"Africa, Europe, western Asia",
@@ -296,7 +296,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"naledi", genus:"Homo", species:"naledi",
+  id:"naledi", slug:"homo-naledi", genus:"Homo", species:"naledi",
   common:"Star Man", meaning:"“Star” (from the Rising Star cave)",
   era:"Middle Pleistocene", start:335000, end:236000, dateLabel:"335,000 – 236,000 years ago",
   brain:"465–610 cc", height:"~144 cm, ~40 kg", region:"Rising Star Cave, South Africa",
@@ -333,7 +333,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"floresiensis", genus:"Homo", species:"floresiensis",
+  id:"floresiensis", slug:"homo-floresiensis", genus:"Homo", species:"floresiensis",
   common:"The Hobbit", meaning:"“Man from Flores”",
   era:"Late Pleistocene", start:100000, end:50000, dateLabel:"~100,000 – 50,000 years ago",
   brain:"~380–420 cc", height:"~106 cm", region:"Liang Bua cave, Flores, Indonesia",
@@ -368,7 +368,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"neanderthalensis", genus:"Homo", species:"neanderthalensis",
+  id:"neanderthalensis", slug:"homo-neanderthalensis", genus:"Homo", species:"neanderthalensis",
   common:"Neanderthals", meaning:"“Man from the Neander Valley”",
   era:"Late Pleistocene", start:430000, end:40000, dateLabel:"~430,000 – 40,000 years ago",
   brain:"1200–1750 cc", height:"~150–175 cm", region:"Europe & western Asia",
@@ -405,7 +405,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"denisovans", genus:"Homo", species:"sp. (Denisovan)",
+  id:"denisovans", slug:"denisovans", genus:"Homo", species:"sp. (Denisovan)",
   common:"Denisovans", meaning:"Named for Denisova Cave, Siberia",
   era:"Late Pleistocene", start:200000, end:30000, dateLabel:"~200,000 – 30,000 years ago",
   brain:"unknown (likely large)", height:"unknown", region:"Siberia, Tibet, and across Asia",
@@ -436,7 +436,7 @@ window.SPECIES = [
   ]
 },
 {
-  id:"sapiens", genus:"Homo", species:"sapiens",
+  id:"sapiens", slug:"homo-sapiens", genus:"Homo", species:"sapiens",
   common:"Modern Humans — us", meaning:"“Wise man”",
   era:"Late Pleistocene – present", start:300000, end:0, dateLabel:"~300,000 years ago – present",
   brain:"~1300–1400 cc", height:"~150–185 cm", region:"Origin in Africa; now global",
