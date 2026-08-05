@@ -301,9 +301,3 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 .page-prose .refs li{font-size:.85rem;color:var(--ink-muted);padding-left:0}
 .page-prose .refs li::before{display:none}
 
-/* ---------- Image credit under species portraits ---------- */
-.sp-credit{font-size:.76rem;line-height:1.5;color:var(--ink-faint);margin:.6rem 0 0;max-width:34ch}
-.sp-credit a{color:var(--ink-muted);border-bottom:1px solid var(--line)}
-.sp-credit a:hover{color:var(--accent);border-color:var(--accent)}
-.sp-credit strong{color:var(--ink-muted);font-weight:600}
-.sp-credit em{font-style:italic}
