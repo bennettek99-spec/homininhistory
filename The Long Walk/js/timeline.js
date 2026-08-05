@@ -19,6 +19,11 @@ const ERAS=[
 ];
 function renderTimeline(){
   const root=document.getElementById('timeline-root');
+  if(!root) return;
+  // The timeline is server-rendered into index.html so crawlers (and readers with
+  // JS off) get the full species list. If it's already present, just attach the
+  // reveal observer instead of rebuilding identical markup.
+  if(root.children.length){ revealTimeline(); return; }
   const sp=[...window.SPECIES].sort((a,b)=>b.start-a.start);
   let html='';
   ERAS.forEach(era=>{
@@ -30,9 +35,9 @@ function renderTimeline(){
       html+=`<div class="tl-item reveal">
         <div class="tl-date mono">${s.dateLabel}</div>
         <span class="tl-node" style="border-color:${s.accent}"></span>
-        <a class="card" href="species/${s.slug}.html" style="--card-accent:${s.accent}" aria-label="Open report on ${s.genus} ${s.species}">
+        <a class="card" href="/species/${s.slug}" style="--card-accent:${s.accent}" aria-label="Open report on ${s.genus} ${s.species}">
           <div class="card-row">
-            <div class="card-thumb species-thumb-${s.id}"><img src="assets/img/${s.img}" alt="Reconstruction of ${s.genus} ${s.species}" loading="lazy"></div>
+            <div class="card-thumb species-thumb-${s.id}"><img src="/assets/img/${s.img}" alt="${s.genus} ${s.species}" loading="lazy"></div>
             <div class="card-body">
               <span class="card-genus">${s.genus} ${s.species}</span>
               <h3>${s.common}</h3>
@@ -53,9 +58,16 @@ function renderTimeline(){
     html+='</div>';
   });
   root.innerHTML=html;
-  // re-run reveal observer for the new nodes
-  if(window.SITE){document.querySelectorAll('.reveal:not(.in)').forEach(e=>{
+  revealTimeline();
+}
+// Attach the scroll-reveal observer to timeline nodes (server-rendered or built here).
+function revealTimeline(){
+  if(!('IntersectionObserver'in window)){
+    document.querySelectorAll('.reveal:not(.in)').forEach(e=>e.classList.add('in'));
+    return;
+  }
+  document.querySelectorAll('.reveal:not(.in)').forEach(e=>{
     const io=new IntersectionObserver((es)=>{es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.1});
     io.observe(e);
-  });}
+  });
 }

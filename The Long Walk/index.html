@@ -12,8 +12,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..640;1,9..144,400..600&family=Work+Sans:wght@300..700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🦴</text></svg>">
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
+<div class="scroll-prog"></div><header class="nav"><div class="wrap nav-in"><a class="brand" href="/"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hominin History</span></a><nav class="nav-links"><a href="/" class="active">Timeline</a><details class="nav-menu"><summary>Explore</summary><div class="nav-menu-panel"><a href="/atlas/">AADR Genome Atlas</a><a href="/migration">Migrations</a><a href="/etruscans">Etruscans</a><a href="/compare">Compare</a><a href="/fossils">Fossil Sites</a><a href="/proteins">Molecules</a></div></details><a href="/blog/">Articles</a><a href="/quiz/">Quiz</a><a href="/about">About</a><button class="icon-btn" data-theme-toggle aria-label="Toggle theme"></button></nav></div></header>
 <main>
   <section class="hero">
     <img class="hero-img" src="assets/img/hero.jpg" alt="A procession of human ancestors walking across deep geological strata at dawn">
@@ -24,7 +26,7 @@
       <p class="lede">From a forest ape that first stood upright to a species that mapped its own genome — scroll the deep-time timeline of human evolution, then follow the DNA trail of where we travelled.</p>
       <div class="hero-cta">
         <a class="btn" href="#timeline">Begin the journey ↓</a>
-        <a class="btn ghost" href="migration.html">Skip to migrations</a>
+        <a class="btn ghost" href="/migration">Skip to migrations</a>
       </div>
     </div>
   </section>
@@ -33,8 +35,8 @@
     <div style="max-width:72ch">
       <span class="kicker" style="font-family:var(--font-mono);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:.8rem">Start here</span>
       <h2 style="font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:520;margin-bottom:1rem">A seven-million-year story, told from the evidence</h2>
-      <p style="font-size:1.06rem;line-height:1.75;color:var(--ink);margin-bottom:1.15rem">Human evolution is the story of how our lineage split from the other African apes around seven million years ago and, through dozens of now-extinct species, eventually produced <em>Homo sapiens</em>. It is not a straight march from "ape to human" but a branching bush: upright-walking <a class="inl" href="species/" style="color:var(--teal)">australopithecines</a> like Lucy, tool-making early <em>Homo</em>, the far-travelling <em>Homo erectus</em>, cold-adapted <a class="inl" href="blog/homo-sapiens-vs-neanderthals.html" style="color:var(--teal)">Neanderthals</a>, the DNA-only <a class="inl" href="blog/neanderthals-vs-denisovans.html" style="color:var(--teal)">Denisovans</a>, and more — many of whom overlapped, met, and interbred.</p>
-      <p style="font-size:1.06rem;line-height:1.75;color:var(--ink);margin-bottom:1.15rem">Hominin History brings that evidence together in one place. Scroll the deep-time <strong>timeline</strong> below to meet each species; open the <a class="inl" href="migration.html" style="color:var(--teal)">migration atlas</a> to explore more than 19,000 ancient-DNA records alongside migrations established by genome-wide research; put any two species head-to-head in the <a class="inl" href="compare.html" style="color:var(--teal)">comparator</a>; or dig into the <a class="inl" href="blog/index.html" style="color:var(--teal)">articles</a> for source-backed deep-dives. Everything here is compiled from museum collections and peer-reviewed research, with debates flagged honestly rather than smoothed over.</p>
+      <p style="font-size:1.06rem;line-height:1.75;color:var(--ink);margin-bottom:1.15rem">Human evolution is the story of how our lineage split from the other African apes around seven million years ago and, through dozens of now-extinct species, eventually produced <em>Homo sapiens</em>. It is not a straight march from "ape to human" but a branching bush: upright-walking <a class="inl" href="species/" style="color:var(--teal)">australopithecines</a> like Lucy, tool-making early <em>Homo</em>, the far-travelling <em>Homo erectus</em>, cold-adapted <a class="inl" href="/blog/homo-sapiens-vs-neanderthals" style="color:var(--teal)">Neanderthals</a>, the DNA-only <a class="inl" href="/blog/neanderthals-vs-denisovans" style="color:var(--teal)">Denisovans</a>, and more — many of whom overlapped, met, and interbred.</p>
+      <p style="font-size:1.06rem;line-height:1.75;color:var(--ink);margin-bottom:1.15rem">Hominin History brings that evidence together in one place. Scroll the deep-time <strong>timeline</strong> below to meet each species; open the <a class="inl" href="/migration" style="color:var(--teal)">migration atlas</a> to explore more than 19,000 ancient-DNA records alongside migrations established by genome-wide research; put any two species head-to-head in the <a class="inl" href="/compare" style="color:var(--teal)">comparator</a>; or dig into the <a class="inl" href="/blog/" style="color:var(--teal)">articles</a> for source-backed deep-dives. Everything here is compiled from museum collections and peer-reviewed research, with debates flagged honestly rather than smoothed over.</p>
     </div>
   </section>
 
@@ -44,7 +46,7 @@
         <span class="card-genus" style="--card-accent:var(--gold)">About the author</span>
         <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">Why I built <em>Hominin History</em></h3>
         <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">Black bears and arrowheads in the Carolina woods, the last wild red wolves on the coast, Lucy in New York, and a wall of 404 dire wolf skulls at the La Brea Tar Pits — the personal journey that turned into this site.</p>
-        <a class="btn" href="about.html">About the author →</a>
+        <a class="btn" href="/about">About the author →</a>
       </div>
     </div>
   </section>
@@ -55,7 +57,280 @@
       <h2>Scroll through our ancestors and cousins</h2>
       <p>Each species below is a stop on the journey, arranged from the deepest past at the top to the present day at the bottom. Tap any card to open its full multi-section report — anatomy, brain, behaviour, key fossils and how it relates to us.</p>
     </div>
-    <div id="timeline-root"></div>
+    <div id="timeline-root"><div class="era-band reveal"><span class="era-name">Late Miocene</span><span class="era-span mono">7 – 5.3 Ma</span></div><div class="timeline"><div class="tl-item reveal">
+        <div class="tl-date mono">~7 million years ago</div>
+        <span class="tl-node" style="border-color:#7d5a2e"></span>
+        <a class="card" href="/species/sahelanthropus-tchadensis" style="--card-accent:#7d5a2e" aria-label="Open report on Sahelanthropus tchadensis">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-sahelanthropus"><img src="/assets/img/sp_sahelanthropus.jpg" alt="Sahelanthropus tchadensis" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Sahelanthropus tchadensis</span>
+              <h3>Toumaï</h3>
+              <div class="common">“Hope of life” (Sahel ape from Chad)</div>
+              <div class="tag">At the very root of the family tree, an ape that may have already stood up.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 320–380 cc</span>
+                <span class="chip">📍 Djurab Desert</span>
+                <span class="chip">Possible earliest hominin</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:23%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div></div><div class="era-band reveal"><span class="era-name">Pliocene</span><span class="era-span mono">5.3 – 2.6 Ma</span></div><div class="timeline"><div class="tl-item reveal">
+        <div class="tl-date mono">~4.4 million years ago</div>
+        <span class="tl-node" style="border-color:#6f6233"></span>
+        <a class="card" href="/species/ardipithecus-ramidus" style="--card-accent:#6f6233" aria-label="Open report on Ardipithecus ramidus">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-ardipithecus"><img src="/assets/img/sp_ardipithecus.jpg" alt="Ardipithecus ramidus" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Ardipithecus ramidus</span>
+              <h3>Ardi</h3>
+              <div class="common">“Ground/root ape”</div>
+              <div class="tag">A walker in the woods, still keeping one grasping foot in the trees.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 300–350 cc</span>
+                <span class="chip">📍 Aramis</span>
+                <span class="chip">Early hominin; close to or…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:21%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">3.9 – 2.9 million years ago</div>
+        <span class="tl-node" style="border-color:#9a6a2f"></span>
+        <a class="card" href="/species/australopithecus-afarensis" style="--card-accent:#9a6a2f" aria-label="Open report on Australopithecus afarensis">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-afarensis"><img src="/assets/img/sp_afarensis.jpg" alt="Australopithecus afarensis" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Australopithecus afarensis</span>
+              <h3>Lucy's species</h3>
+              <div class="common">“Southern ape from Afar”</div>
+              <div class="tag">Confidently bipedal on the ground — and the maker of footprints frozen in ash.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 380–430 cc</span>
+                <span class="chip">📍 Eastern Africa</span>
+                <span class="chip">Strong candidate ancestor…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:27%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">3.3 – 2.1 million years ago</div>
+        <span class="tl-node" style="border-color:#86663a"></span>
+        <a class="card" href="/species/australopithecus-africanus" style="--card-accent:#86663a" aria-label="Open report on Australopithecus africanus">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-africanus"><img src="/assets/img/sp_africanus.jpg" alt="Australopithecus africanus" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Australopithecus africanus</span>
+              <h3>Taung Child's species</h3>
+              <div class="common">“Southern ape of Africa”</div>
+              <div class="tag">The fossil that first convinced the world humanity began in Africa.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 ~450 cc</span>
+                <span class="chip">📍 Southern Africa</span>
+                <span class="chip">Southern australopith;…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:32%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div></div><div class="era-band reveal"><span class="era-name">Early Pleistocene</span><span class="era-span mono">2.6 – 0.8 Ma</span></div><div class="timeline"><div class="tl-item reveal">
+        <div class="tl-date mono">2.4 – 1.5 million years ago</div>
+        <span class="tl-node" style="border-color:#8a5a2c"></span>
+        <a class="card" href="/species/homo-habilis" style="--card-accent:#8a5a2c" aria-label="Open report on Homo habilis">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-habilis"><img src="/assets/img/sp_habilis.jpg" alt="Homo habilis" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo habilis</span>
+              <h3>Handy Man</h3>
+              <div class="common">“Handy / able man”</div>
+              <div class="tag">The first of our own genus — and, perhaps, the first deliberate toolmaker named for it.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 510–690 cc</span>
+                <span class="chip">📍 Eastern & southern Africa</span>
+                <span class="chip">Early Homo; transitional…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:36%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">2.3 – 1.2 million years ago</div>
+        <span class="tl-node" style="border-color:#5f5230"></span>
+        <a class="card" href="/species/paranthropus-boisei" style="--card-accent:#5f5230" aria-label="Open report on Paranthropus boisei">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-paranthropus"><img src="/assets/img/sp_paranthropus.jpg" alt="Paranthropus boisei" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Paranthropus boisei</span>
+              <h3>Nutcracker Man</h3>
+              <div class="common">“Beside-human”</div>
+              <div class="tag">A specialist of the chewing apparatus — and a dead end on the tree.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 500–550 cc</span>
+                <span class="chip">📍 Eastern Africa</span>
+                <span class="chip">Robust side-branch</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:36%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">1.9 million – ~110,000 years ago</div>
+        <span class="tl-node" style="border-color:#a85a26"></span>
+        <a class="card" href="/species/homo-erectus" style="--card-accent:#a85a26" aria-label="Open report on Homo erectus">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-erectus"><img src="/assets/img/sp_erectus.jpg" alt="Homo erectus" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo erectus</span>
+              <h3>Upright Man</h3>
+              <div class="common">“Upright man”</div>
+              <div class="tag">The great pioneer: the first human to walk out of Africa, master fire, and endure for over a million years.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 600–1100 cc</span>
+                <span class="chip">📍 Africa</span>
+                <span class="chip">Long-lived ancestor; first…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:43%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div></div><div class="era-band reveal"><span class="era-name">Middle Pleistocene</span><span class="era-span mono">770 – 130 ka</span></div><div class="timeline"><div class="tl-item reveal">
+        <div class="tl-date mono">~700,000 – 200,000 years ago</div>
+        <span class="tl-node" style="border-color:#8f4a22"></span>
+        <a class="card" href="/species/homo-heidelbergensis" style="--card-accent:#8f4a22" aria-label="Open report on Homo heidelbergensis">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-heidelbergensis"><img src="/assets/img/sp_heidelbergensis.jpg" alt="Homo heidelbergensis" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo heidelbergensis</span>
+              <h3>Heidelberg Man</h3>
+              <div class="common">“Man from Heidelberg”</div>
+              <div class="tag">The crossroads species — big-brained hunters whose descendants would split into Neanderthals, Denisovans and us.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 1100–1400 cc</span>
+                <span class="chip">📍 Africa</span>
+                <span class="chip">The pivot</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:79%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">~430,000 – 40,000 years ago</div>
+        <span class="tl-node" style="border-color:#7a5fa0"></span>
+        <a class="card" href="/species/homo-neanderthalensis" style="--card-accent:#7a5fa0" aria-label="Open report on Homo neanderthalensis">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-neanderthalensis"><img src="/assets/img/sp_neanderthal.jpg" alt="Homo neanderthalensis" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo neanderthalensis</span>
+              <h3>Neanderthals</h3>
+              <div class="common">“Man from the Neander Valley”</div>
+              <div class="tag">Cold-adapted, big-brained and deeply human — our closest kin, and partly inside our own DNA.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 1200–1750 cc</span>
+                <span class="chip">📍 Europe & western Asia</span>
+                <span class="chip">Closest extinct relatives</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:86%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">335,000 – 236,000 years ago</div>
+        <span class="tl-node" style="border-color:#5a6b6b"></span>
+        <a class="card" href="/species/homo-naledi" style="--card-accent:#5a6b6b" aria-label="Open report on Homo naledi">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-naledi"><img src="/assets/img/sp_naledi.jpg" alt="Homo naledi" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo naledi</span>
+              <h3>Star Man</h3>
+              <div class="common">“Star” (from the Rising Star cave)</div>
+              <div class="tag">A tiny-brained human that survived into our own age — and may have buried its dead in the dark.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 465–610 cc</span>
+                <span class="chip">📍 Rising Star Cave</span>
+                <span class="chip">Small-brained cousin that…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:33%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">~300,000 years ago – present</div>
+        <span class="tl-node" style="border-color:#b4531f"></span>
+        <a class="card" href="/species/homo-sapiens" style="--card-accent:#b4531f" aria-label="Open report on Homo sapiens">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-sapiens"><img src="/assets/img/sp_sapiens.jpg" alt="Homo sapiens" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo sapiens</span>
+              <h3>Modern Humans — us</h3>
+              <div class="common">“Wise man”</div>
+              <div class="tag">The last human standing — a symbol-making, story-telling, world-spanning ape.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 ~1300–1400 cc</span>
+                <span class="chip">📍 Origin in Africa; now global</span>
+                <span class="chip">The sole surviving human…</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:93%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div><div class="tl-item reveal">
+        <div class="tl-date mono">~200,000 – 30,000 years ago</div>
+        <span class="tl-node" style="border-color:#4f7f8a"></span>
+        <a class="card" href="/species/denisovans" style="--card-accent:#4f7f8a" aria-label="Open report on Homo sp. (Denisovan)">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-denisovans"><img src="/assets/img/sp_denisovan.jpg" alt="Homo sp. (Denisovan)" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo sp. (Denisovan)</span>
+              <h3>Denisovans</h3>
+              <div class="common">Named for Denisova Cave, Siberia</div>
+              <div class="tag">A whole human species first discovered not from a skull, but from a fingertip's DNA.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 unknown (likely large)</span>
+                <span class="chip">📍 Siberia</span>
+                <span class="chip">A 'genetic' human species</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:29%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div></div><div class="era-band reveal"><span class="era-name">Late Pleistocene & Holocene</span><span class="era-span mono">130 ka – today</span></div><div class="timeline"><div class="tl-item reveal">
+        <div class="tl-date mono">~100,000 – 50,000 years ago</div>
+        <span class="tl-node" style="border-color:#6b7a3a"></span>
+        <a class="card" href="/species/homo-floresiensis" style="--card-accent:#6b7a3a" aria-label="Open report on Homo floresiensis">
+          <div class="card-row">
+            <div class="card-thumb species-thumb-floresiensis"><img src="/assets/img/sp_floresiensis.jpg" alt="Homo floresiensis" loading="lazy"></div>
+            <div class="card-body">
+              <span class="card-genus">Homo floresiensis</span>
+              <h3>The Hobbit</h3>
+              <div class="common">“Man from Flores”</div>
+              <div class="tag">A one-metre-tall human that hunted dwarf elephants on a lost island world.</div>
+              <div class="card-meta">
+                <span class="chip">🧠 ~380–420 cc</span>
+                <span class="chip">📍 Liang Bua cave</span>
+                <span class="chip">Isolated island cousin</span>
+              </div>
+              <div class="bw" title="brain size relative to modern human"><span style="width:27%"></span></div>
+            </div>
+          </div>
+          <span class="card-go">→</span>
+        </a>
+      </div></div></div>
   </section>
 
   <section class="wrap reveal" style="padding-top:0">
@@ -65,7 +340,7 @@
           <span class="card-genus">The journey continues</span>
           <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">Where did <em>Homo sapiens</em> go next?</h3>
           <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">Once modern humans walked out of Africa, the story shifts from fossils to genomes. Explore 19,029 ancient-DNA records, spatio-temporal clusters, candidate connections and the published evidence for the great migrations that peopled the planet.</p>
-          <a class="btn" href="migration.html">Explore ancient human migrations →</a>
+          <a class="btn" href="/migration">Explore ancient human migrations →</a>
         </div>
       </div>
     </div>
@@ -78,7 +353,7 @@
           <span class="card-genus" style="--card-accent:var(--teal)">New research case study &middot; Ancient DNA</span>
           <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">The Etruscan <em>genome project</em></h3>
           <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">A distinctive non-Indo-European language—but a broadly local Iron Age ancestry profile. Explore 78 Etruscan-labelled AADR individuals across 14 localities, with an interactive map and evidence-graded conclusions.</p>
-          <a class="btn" href="etruscans.html">Investigate the Etruscan evidence →</a>
+          <a class="btn" href="/etruscans">Investigate the Etruscan evidence →</a>
         </div>
         <div class="mono" aria-hidden="true" style="font-size:clamp(2rem,7vw,5.5rem);color:var(--teal);opacity:.55;letter-spacing:-.14em;padding-right:.35em">𐌀&nbsp;DNA</div>
       </div>
@@ -91,7 +366,7 @@
         <span class="card-genus">New &middot; Interactive</span>
         <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">Compare any two hominins, <em>side by side</em></h3>
         <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">How much taller was a modern human than Lucy? Whose brain was bigger, a Neanderthal's or ours? Pick any two species and see them measured against each other — to-scale height, brain size, timeline and the facts that set them apart.</p>
-        <a class="btn" href="compare.html">Open the species comparator →</a>
+        <a class="btn" href="/compare">Open the species comparator →</a>
       </div>
     </div>
   </section>
@@ -102,7 +377,7 @@
         <span class="card-genus" style="--card-accent:#3a6b8f">New &middot; Interactive map</span>
         <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">The world's great <em>fossil sites</em></h3>
         <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">Almost everything we know comes from a scatter of caves, gorges and lake beds. Explore an interactive world map of the sites that produced the fossils — from Lucy at Hadar to the Denisova Cave — each pin opening the full story.</p>
-        <a class="btn" href="fossils.html">Explore the fossil-sites map →</a>
+        <a class="btn" href="/fossils">Explore the fossil-sites map →</a>
       </div>
     </div>
   </section>
@@ -113,7 +388,7 @@
         <span class="card-genus" style="--card-accent:var(--teal)">New &middot; Interactive</span>
         <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">The <em>molecules</em> that made us</h3>
         <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">Evolution isn't only in the bones. Spin real 3D structures of the proteins behind our story — <em>FOXP2</em>, the "language gene"; the haemoglobin that malaria reshaped; the altitude gene we borrowed from Denisovans.</p>
-        <a class="btn" href="proteins.html">Open the 3D protein viewer →</a>
+        <a class="btn" href="/proteins">Open the 3D protein viewer →</a>
       </div>
     </div>
   </section>
@@ -121,16 +396,16 @@
   <section class="wrap reveal" style="padding-top:0">
     <div class="card" style="--card-accent:var(--gold);max-width:none">
       <div style="padding:clamp(1.5rem,4vw,2.6rem)">
-        <span class="card-genus" style="--card-accent:var(--gold)">Just for fun &middot; 8 questions</span>
+        <span class="card-genus" style="--card-accent:var(--gold)">Just for fun &middot; 10 questions</span>
         <h3 style="font-style:normal;font-size:clamp(1.6rem,3.5vw,2.3rem)">Which <em>hominin</em> are you?</h3>
-        <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">Are you a loyal Neanderthal, a globe-trotting <em>Homo erectus</em>, or the resourceful Hobbit? Answer eight quick questions and meet the ancient human who shares your personality — every result grounded in the real fossil record.</p>
-        <a class="btn" href="quiz/index.html">Take the quiz →</a>
+        <p class="tag" style="-webkit-line-clamp:initial;display:block;margin:.6rem 0 1.2rem">Are you a loyal Neanderthal, a globe-trotting <em>Homo erectus</em>, or the resourceful Hobbit? Answer ten quick questions and meet the ancient human who shares your personality — every result grounded in the real fossil record.</p>
+        <a class="btn" href="/quiz/">Take the quiz →</a>
       </div>
     </div>
   </section>
 
   <section class="wrap" style="padding-top:0;padding-bottom:clamp(2rem,6vw,3.5rem)">
-    <a href="blog/index.html" class="card" style="display:block;max-width:none;padding:1rem 1.3rem;text-decoration:none">
+    <a href="/blog/" class="card" style="display:block;max-width:none;padding:1rem 1.3rem;text-decoration:none">
       <span class="card-genus">The Articles</span>
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.2rem">
         <h3 style="font-style:normal;font-weight:560;font-size:1.15rem;margin:0">Deep-dives on the species, sites &amp; science of human evolution</h3>
@@ -140,6 +415,7 @@
     </a>
   </section>
 </main>
+<footer class="site-foot" id="about"><div class="wrap"><div><a class="brand" href="/"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hominin History</span></a><p style="margin-top:.7rem">An interactive journey through human evolution and the genomic record of where our species travelled. Built as a science-communication project — species accounts from museum and primary sources; exploratory genomic maps computed from the Allen Ancient DNA Resource (AADR v66.p1).</p><p style="margin-top:.7rem"><a href="/quiz/" style="color:var(--accent);font-weight:600">Which Hominin Are You? Take the quiz →</a></p></div><p>Species images are freely licensed via Wikimedia Commons &mdash; <a href="/credits" style="color:inherit;text-decoration:underline">full credits</a>.<br>Data &middot; AADR / Harvard Dataverse &middot; doi:10.7910/DVN/FFIDCW<br>&copy; 2026 — for education &amp; research.</p><nav class="foot-legal" aria-label="Legal"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Disclaimer</a><a href="/credits">Image Credits</a></nav></div></footer>
 <script src="js/species.js"></script>
 <script src="js/app.js"></script>
 <script src="js/timeline.js"></script>

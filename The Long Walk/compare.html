@@ -71,6 +71,7 @@
 </style>
 </head>
 <body>
+<div class="scroll-prog"></div><header class="nav"><div class="wrap nav-in"><a class="brand" href="/"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hominin History</span></a><nav class="nav-links"><a href="/">Timeline</a><details class="nav-menu active"><summary>Explore</summary><div class="nav-menu-panel"><a href="/atlas/">AADR Genome Atlas</a><a href="/migration">Migrations</a><a href="/etruscans">Etruscans</a><a href="/compare" class="active">Compare</a><a href="/fossils">Fossil Sites</a><a href="/proteins">Molecules</a></div></details><a href="/blog/">Articles</a><a href="/quiz/">Quiz</a><a href="/about">About</a><button class="icon-btn" data-theme-toggle aria-label="Toggle theme"></button></nav></div></header>
 <main>
   <section class="banner">
     <div class="wrap" style="padding-block:clamp(2.6rem,7vw,4.4rem);max-width:820px">
@@ -108,9 +109,52 @@
       <div id="links"></div>
     </div>
 
-    <p style="color:var(--ink-muted);font-size:.86rem;max-width:70ch;margin-top:1.6rem">Heights and brain volumes are representative adult figures compiled from museum and primary sources; several early species are known from very few individuals, so ranges are wide. Denisovan body size is essentially unknown. Reconstruction portraits are interpretive illustrations.</p>
+    <p style="color:var(--ink-muted);font-size:.86rem;max-width:70ch;margin-top:1.6rem">Heights and brain volumes are representative adult figures compiled from museum and primary sources; several early species are known from very few individuals, so ranges are wide. Denisovan body size is essentially unknown. Species images are freely licensed via Wikimedia Commons &mdash; <a href="/credits" style="color:inherit;text-decoration:underline">full credits</a>.</p>
+  </section>
+
+  <section class="wrap">
+    <div class="page-prose">
+      <h2>How to read a hominin comparison</h2>
+      <p>Putting two species side by side is the fastest way to feel the difference between them — and the fastest way to draw the wrong conclusion. A bar chart makes every number look equally solid. In palaeoanthropology they almost never are. Some of the figures above rest on hundreds of specimens; others rest on one damaged skull and a lot of careful argument.</p>
+      <p>Three things are worth knowing before you trust any single comparison.</p>
+
+      <h3>Height is an average of very few individuals</h3>
+      <p>For <em>Homo sapiens</em> we have billions of living people to measure. For <em>Sahelanthropus tchadensis</em> we have a single distorted cranium and no postcranial skeleton at all, which is why its height is listed as unknown rather than estimated. Most early hominins sit somewhere between those extremes.</p>
+      <p>Early hominins were also strongly <strong>sexually dimorphic</strong> — males were substantially bigger than females. <em>Australopithecus afarensis</em> is the clearest case: Lucy stood about 105 cm, while male individuals from the same species reached roughly 150 cm. A single "average height" hides a difference of nearly half a metre. When you compare Lucy to a modern human, you are comparing one small female to a species-wide average, and the gap looks larger than it really was.</p>
+
+      <h3>A bigger brain is not automatically a smarter one</h3>
+      <p>This is the comparison readers misread most often. Neanderthal braincases run from about 1,200 to 1,750 cc, and the average sits at or slightly above the modern human average of roughly 1,350 cc. Neanderthals did not therefore out-think us.</p>
+      <p>Absolute brain volume scales with body mass, and Neanderthals were heavier, stockier and more muscular than most living humans, with a larger visual cortex to run bigger eyes adapted to high-latitude light. Researchers usually control for this with the <strong>encephalization quotient</strong> (EQ) — brain size relative to what an animal of that body mass would be expected to have. Brain <em>shape</em> matters too: modern human braincases are globular, with expanded parietal and cerebellar regions, while Neanderthal braincases are long and low. Two brains can be the same size and organised quite differently.</p>
+      <p><em>Homo floresiensis</em> makes the opposite point. Its brain was around 426 cc — smaller than a chimpanzee's — yet the Liang Bua deposits contain stone tools and evidence of butchery. Raw volume is a weak predictor of behaviour on its own.</p>
+
+      <h2>Why so many of the timeline bars overlap</h2>
+      <p>The most surprising panel on this page is usually the timeline. Human evolution is often pictured as a relay race in which one species hands off to the next, but the bars overlap constantly, because for almost all of the last four million years there was more than one kind of hominin alive at once.</p>
+      <p>Around 1.8 million years ago in East Africa, <em>Homo habilis</em>, early <em>Homo erectus</em> and <em>Paranthropus boisei</em> were all living in the same landscapes. Far more recently — around 50,000 years ago — the planet still held <em>Homo sapiens</em>, Neanderthals, Denisovans, <em>Homo floresiensis</em> on Flores and <em>Homo luzonensis</em> in the Philippines. A world with only one human species is the strange, recent exception, not the rule.</p>
+      <p>Overlapping in time does not guarantee overlapping in place. Use the <a href="/fossils">fossil-sites map</a> to check whether two species were ever plausibly in the same region before assuming they met.</p>
+
+      <h2>Where these numbers come from</h2>
+      <p>Height and brain volume here are representative adult figures compiled from the Smithsonian Human Origins programme, the Natural History Museum in London, the Australian Museum and the primary descriptions of individual specimens. Where a species is known from very few individuals, the range is deliberately wide.</p>
+      <p>Denisovans are the hardest case on the list. They are defined largely by their genome rather than their skeleton — a finger bone and teeth from Denisova Cave, plus the Xiahe mandible from the Tibetan Plateau. There is no reliable Denisovan stature estimate, so the height panel shows them as unknown rather than guessing.</p>
+      <p>The reconstruction portraits are interpretive illustrations, not photographs or forensic reconstructions of specific individuals. Skin tone, hair and soft tissue are informed guesses; only the underlying skeletal proportions are constrained by fossils.</p>
+
+      <div class="cta">
+        <p>Comparisons are most useful once you know where each species sits in the wider story. Scroll the full deep-time timeline to see all thirteen in order, then come back and pit any two against each other.</p>
+        <a class="btn" href="/#timeline">Open the deep-time timeline →</a>
+      </div>
+
+      <div class="refs">
+        <span class="lbl">Sources &amp; further reading</span>
+        <ol>
+          <li>Smithsonian National Museum of Natural History — Human Origins: species profiles and brain-size data. <a href="https://humanorigins.si.edu/evidence/human-fossils/species">humanorigins.si.edu</a></li>
+          <li>Natural History Museum, London — Human evolution. <a href="https://www.nhm.ac.uk/discover/human-evolution.html">nhm.ac.uk</a></li>
+          <li>Neubauer, S., Hublin, J.-J. &amp; Gunz, P. (2018). "The evolution of modern human brain shape." <em>Science Advances</em> 4, eaao5961. <a href="https://www.science.org/doi/10.1126/sciadv.aao5961">science.org</a></li>
+          <li>Brown, P. et al. (2004). "A new small-bodied hominin from the Late Pleistocene of Flores, Indonesia." <em>Nature</em> 431, 1055–1061. <a href="https://www.nature.com/articles/nature02999">nature.com</a></li>
+        </ol>
+      </div>
+    </div>
   </section>
 </main>
+<footer class="site-foot" id="about"><div class="wrap"><div><a class="brand" href="/"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hominin History</span></a><p style="margin-top:.7rem">An interactive journey through human evolution and the genomic record of where our species travelled. Built as a science-communication project — species accounts from museum and primary sources; exploratory genomic maps computed from the Allen Ancient DNA Resource (AADR v66.p1).</p><p style="margin-top:.7rem"><a href="/quiz/" style="color:var(--accent);font-weight:600">Which Hominin Are You? Take the quiz →</a></p></div><p>Species images are freely licensed via Wikimedia Commons &mdash; <a href="/credits" style="color:inherit;text-decoration:underline">full credits</a>.<br>Data &middot; AADR / Harvard Dataverse &middot; doi:10.7910/DVN/FFIDCW<br>&copy; 2026 — for education &amp; research.</p><nav class="foot-legal" aria-label="Legal"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Disclaimer</a><a href="/credits">Image Credits</a></nav></div></footer>
 <script src="js/species.js"></script>
 <script src="js/app.js"></script>
 <script src="js/compare.js"></script>

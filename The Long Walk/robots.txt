@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Domain-verification token, not a content page.
+Disallow: /zohoverify/
+
 Sitemap: https://homininhistory.com/sitemap.xml

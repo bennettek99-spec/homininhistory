@@ -127,10 +127,11 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"The Molecules That Made Us — Interactive 3D Protein Viewer","description":"An interactive 3D viewer for the proteins behind human evolution, including FOXP2, haemoglobin, salivary amylase, EPAS1, lactase and MC1R.","isPartOf":{"@type":"WebSite","name":"Hominin History","url":"https://homininhistory.com/"},"isAccessibleForFree":true}</script>
 </head>
 <body>
+<div class="scroll-prog"></div><header class="nav"><div class="wrap nav-in"><a class="brand" href="/"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hominin History</span></a><nav class="nav-links"><a href="/">Timeline</a><details class="nav-menu active"><summary>Explore</summary><div class="nav-menu-panel"><a href="/atlas/">AADR Genome Atlas</a><a href="/migration">Migrations</a><a href="/etruscans">Etruscans</a><a href="/compare">Compare</a><a href="/fossils">Fossil Sites</a><a href="/proteins" class="active">Molecules</a></div></details><a href="/blog/">Articles</a><a href="/quiz/">Quiz</a><a href="/about">About</a><button class="icon-btn" data-theme-toggle aria-label="Toggle theme"></button></nav></div></header>
 <main>
   <header class="pv-head">
     <div class="wrap">
-      <div class="crumbs"><a href="index.html">Hominin History</a> / Molecules</div>
+      <div class="crumbs"><a href="/">Hominin History</a> / Molecules</div>
       <div class="eyebrow">Interactive &middot; Molecules</div>
       <h1>The <em>Molecules</em> That Made Us</h1>
       <p class="lede">Evolution doesn't only live in fossils and skulls — it's written into the proteins our cells build. Spin, zoom and restyle the real 3D structures behind some of the most human stories in our genome, starting with FOXP2, the so-called "language gene".</p>
@@ -196,7 +197,7 @@
   <section class="wrap pv-stories" id="stories">
     <h2>Why these molecules?</h2>
     <p style="color:var(--ink-muted);max-width:72ch;margin-bottom:1.4rem">Each protein below carries a chapter of the human story — a change of diet, a move to thin mountain air, a borrowed gene from an archaic cousin, or the deep machinery of speech. Pick one to load it in the viewer above.</p>
-    <div class="story-grid" id="story-grid"></div>
+    <div class="story-grid" id="story-grid"><article class="story"><span class="gn">FOXP2</span><h3>FOXP2 <span class="sub">The “language gene”</span></h3><p>A transcription factor that switches other genes on and off in the developing brain and vocal circuitry. The human version differs from the chimpanzee’s by just two amino acids — T303N and N325S — fixed on our lineage after the split, and the gene carries signatures of positive selection. Mutations in it cause an inherited speech-and-language disorder. Neanderthals shared the same two human changes, so the truth is subtler than “the gene that gave us speech”.</p><button class="jump" data-id="foxp2">View in 3D ↑</button></article><article class="story"><span class="gn">HBA / HBB</span><h3>Haemoglobin <span class="sub">Oxygen, malaria &amp; natural selection</span></h3><p>The oxygen-ferrying protein of red blood cells: four globin chains cradling four iron-bearing haem groups. A single base change in the β-globin gene makes sickle haemoglobin (HbS) — one copy guards against malaria, two copies cause sickle-cell disease. Because malaria kept the protective allele common, HbS is the textbook example of natural selection still acting on living humans.</p><button class="jump" data-id="hbb">View in 3D ↑</button></article><article class="story"><span class="gn">AMY1</span><h3>Salivary amylase <span class="sub">Starch, diet &amp; copy number</span></h3><p>The enzyme in saliva that begins breaking starch into sugar — the reason bread turns sweet as you chew. Humans typically carry many more copies of the AMY1 gene than chimpanzees do, and populations with starchy diets tend to carry the most: more gene copies mean more enzyme. It’s a striking case of recent dietary adaptation written in copy number rather than a single mutation.</p><button class="jump" data-id="amy1">View in 3D ↑</button></article><article class="story"><span class="gn">EPAS1</span><h3>EPAS1 / HIF-2α <span class="sub">A gene borrowed from Denisovans</span></h3><p>A master switch in the body’s response to low oxygen. A version of EPAS1 that lets Tibetans thrive above 4,000 m — without the thickened, dangerous blood lowlanders develop at altitude — was inherited from the Denisovans, an archaic human group known mostly from DNA. It is one of the clearest cases of adaptive introgression: a useful gene borrowed from another kind of human.</p><button class="jump" data-id="epas1">View in 3D ↑</button></article><article class="story"><span class="gn">LCT</span><h3>Lactase <span class="sub">Milk-drinking into adulthood</span></h3><p>The gut enzyme that digests lactose, the sugar in milk. In most mammals it switches off after weaning; in many humans a regulatory mutation keeps it on for life — “lactase persistence”. Different mutations arose independently in Europe and in African herding peoples within roughly the last 10,000 years: evolution responding to dairying, several separate times.</p><button class="jump" data-id="lct">View in 3D ↑</button></article><article class="story"><span class="gn">MC1R</span><h3>MC1R <span class="sub">Skin, hair &amp; latitude</span></h3><p>A receptor on pigment cells that helps decide whether they make dark eumelanin or lighter pheomelanin — a major control on skin and hair colour. As humans spread into cloudier, higher latitudes, variation here was shaped by the trade-off between UV protection and vitamin-D synthesis. Some Neanderthals carried their own reduced-function MC1R variant, hinting at pale skin or red hair.</p><button class="jump" data-id="mc1r">View in 3D ↑</button></article></div>
   </section>
 
   <!-- How to read a structure -->
@@ -207,7 +208,7 @@
 
     <div class="cta">
       <p>These proteins belong to specific players in our family tree — the Denisovans behind the altitude gene, the Neanderthals who shared our FOXP2. Meet them on the interactive timeline.</p>
-      <a class="btn" href="index.html#timeline">Explore the family tree →</a>
+      <a class="btn" href="/#timeline">Explore the family tree →</a>
     </div>
 
     <div class="refs">
@@ -225,6 +226,7 @@
     </div>
   </section>
 </main>
+<footer class="site-foot" id="about"><div class="wrap"><div><a class="brand" href="/"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4 27c2.2-1 3.4-3.2 3.4-6.2 0-3.4-1.8-5.2-1.8-8.4C5.6 8 9 5 13 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 5c3.3 0 5.2 2.1 5.2 5 0 2.4-1.4 3.7-1.4 6 0 2.1 1.3 3.2 1.3 5.6 0 3-1.9 5.4-4.6 5.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="22.5" cy="9.5" r="3.2" stroke="currentColor" stroke-width="2"/><path d="M25 12.5l3.4 3.4M21 21l4-2.6 3 3.2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hominin History</span></a><p style="margin-top:.7rem">An interactive journey through human evolution and the genomic record of where our species travelled. Built as a science-communication project — species accounts from museum and primary sources; exploratory genomic maps computed from the Allen Ancient DNA Resource (AADR v66.p1).</p><p style="margin-top:.7rem"><a href="/quiz/" style="color:var(--accent);font-weight:600">Which Hominin Are You? Take the quiz →</a></p></div><p>Species images are freely licensed via Wikimedia Commons &mdash; <a href="/credits" style="color:inherit;text-decoration:underline">full credits</a>.<br>Data &middot; AADR / Harvard Dataverse &middot; doi:10.7910/DVN/FFIDCW<br>&copy; 2026 — for education &amp; research.</p><nav class="foot-legal" aria-label="Legal"><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy Policy</a><a href="/terms">Terms &amp; Disclaimer</a><a href="/credits">Image Credits</a></nav></div></footer>
 
 <script src="js/app.js"></script>
 <script>SITE.init('proteins.html');</script>
@@ -316,6 +318,9 @@
   function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
   // ---- Build the gallery + story cards ------------------------------------
+  // Story cards ship server-rendered in #story-grid (crawlable, and readable with
+  // JS off). Check once, before the loop, so we don't half-build the list.
+  var storiesPrerendered = elStoryGrid.children.length > 0;
   PROTEINS.forEach(function(p){
     var b=document.createElement('button');
     b.className='pv-pick'; b.id='pick-'+p.id; b.setAttribute('aria-current','false');
@@ -323,11 +328,13 @@
     b.addEventListener('click',function(){selectProtein(p.id,0);});
     elGallery.appendChild(b);
 
-    var s=document.createElement('article');
-    s.className='story';
-    s.innerHTML='<span class="gn">'+esc(p.gene)+'</span><h3>'+esc(p.name)+' <span class="sub">'+esc(p.tag)+'</span></h3>'+
-      '<p>'+esc(p.blurb)+'</p><button class="jump" data-id="'+p.id+'">View in 3D ↑</button>';
-    elStoryGrid.appendChild(s);
+    if(!storiesPrerendered){
+      var s=document.createElement('article');
+      s.className='story';
+      s.innerHTML='<span class="gn">'+esc(p.gene)+'</span><h3>'+esc(p.name)+' <span class="sub">'+esc(p.tag)+'</span></h3>'+
+        '<p>'+esc(p.blurb)+'</p><button class="jump" data-id="'+p.id+'">View in 3D ↑</button>';
+      elStoryGrid.appendChild(s);
+    }
   });
   elStoryGrid.addEventListener('click',function(e){
     var btn=e.target.closest('button.jump'); if(!btn) return;

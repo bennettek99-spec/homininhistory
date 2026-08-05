@@ -279,3 +279,31 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 .faq-item{margin:1.2rem 0}
 .faq-item h3{font-family:var(--font-display);font-size:1.12rem;font-weight:560;color:var(--ink);margin:0 0 .35rem}
 .faq-item p{margin:0;color:var(--ink-muted);max-width:74ch}
+
+/* ---------- Editorial prose on the interactive tool pages ---------- */
+.page-prose{max-width:72ch;margin-inline:auto;padding-block:clamp(1.6rem,5vw,3rem)}
+.page-prose h2{font-size:clamp(1.4rem,3vw,1.95rem);font-weight:520;margin:2.4rem 0 .8rem;display:flex;align-items:center;gap:.7rem;scroll-margin-top:90px}
+.page-prose h2::before{content:"";width:26px;height:2px;background:var(--accent);flex:none}
+.page-prose h3{font-family:var(--font-display);font-size:1.14rem;font-weight:560;margin:1.7rem 0 .5rem;color:var(--ink)}
+.page-prose p{margin-bottom:1.15rem;font-size:1.05rem;line-height:1.75;color:var(--ink)}
+.page-prose ul{margin:.2rem 0 1.3rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.page-prose li{position:relative;padding-left:1.45rem;color:var(--ink);line-height:1.7}
+.page-prose li::before{content:"";position:absolute;left:.15rem;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.page-prose a{color:var(--teal);border-bottom:1px solid color-mix(in oklab,var(--teal),transparent 55%)}
+.page-prose a:hover{color:var(--accent);border-color:var(--accent)}
+.page-prose .cta{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--accent);
+  border-radius:0 var(--r-md) var(--r-md) 0;padding:1.5rem 1.7rem;margin:2.6rem 0}
+.page-prose .cta p{margin:0 0 1rem;font-size:1.04rem}
+.page-prose .cta a{border-bottom:none}
+.page-prose .refs{margin-top:2.4rem;padding-top:1.4rem;border-top:1px solid var(--line)}
+.page-prose .refs .lbl{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-faint);display:block;margin-bottom:1rem}
+.page-prose .refs ol{padding-left:1.3rem;display:flex;flex-direction:column;gap:.5rem;margin:0}
+.page-prose .refs li{font-size:.85rem;color:var(--ink-muted);padding-left:0}
+.page-prose .refs li::before{display:none}
+
+/* ---------- Image credit under species portraits ---------- */
+.sp-credit{font-size:.76rem;line-height:1.5;color:var(--ink-faint);margin:.6rem 0 0;max-width:34ch}
+.sp-credit a{color:var(--ink-muted);border-bottom:1px solid var(--line)}
+.sp-credit a:hover{color:var(--accent);border-color:var(--accent)}
+.sp-credit strong{color:var(--ink-muted);font-weight:600}
+.sp-credit em{font-style:italic}
