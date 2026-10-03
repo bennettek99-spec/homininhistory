@@ -4,16 +4,16 @@
 /blog/acheulean-vs-mousterian.html                         /blog/stone-knapping-methods                   301!
 /blog/australopithecus-anamensis-vs-afarensis              /blog/australopithecus-afarensis-vs-africanus  301!
 /blog/australopithecus-anamensis-vs-afarensis.html         /blog/australopithecus-afarensis-vs-africanus  301!
-/blog/australopithecus-sediba-vs-homo-habilis              /blog/homo-habilis-vs-homo-erectus             301!
-/blog/australopithecus-sediba-vs-homo-habilis.html         /blog/homo-habilis-vs-homo-erectus             301!
+/blog/australopithecus-sediba-vs-homo-habilis              /blog/australopithecus-sediba                  301!
+/blog/australopithecus-sediba-vs-homo-habilis.html         /blog/australopithecus-sediba                  301!
 /blog/blombos-vs-sibudu                                    /blog/venus-figurines                          301!
 /blog/blombos-vs-sibudu.html                               /blog/venus-figurines                          301!
 /blog/chatelperronian-vs-aurignacian                       /blog/stone-knapping-methods                   301!
 /blog/chatelperronian-vs-aurignacian.html                  /blog/stone-knapping-methods                   301!
 /blog/denisovans-finger-bone                               /blog/denisovan-dna-in-modern-humans           301!
 /blog/denisovans-finger-bone.html                          /blog/denisovan-dna-in-modern-humans           301!
-/blog/dmanisi-vs-atapuerca                                 /blog/out-of-africa-theory-explained           301!
-/blog/dmanisi-vs-atapuerca.html                            /blog/out-of-africa-theory-explained           301!
+/blog/dmanisi-vs-atapuerca                                 /blog/dmanisi-hominins                         301!
+/blog/dmanisi-vs-atapuerca.html                            /blog/dmanisi-hominins                         301!
 /blog/find-neanderthal-dna-in-your-raw-data                /blog/how-much-neanderthal-dna-do-you-have     301!
 /blog/find-neanderthal-dna-in-your-raw-data.html           /blog/how-much-neanderthal-dna-do-you-have     301!
 /blog/gigantopithecus-vs-paranthropus                      /blog/paranthropus-vs-australopithecus         301!
@@ -34,8 +34,8 @@
 /blog/homo-rhodesiensis-vs-homo-heidelbergensis.html       /blog/homo-heidelbergensis-vs-neanderthals     301!
 /blog/kenyanthropus-platyops-vs-australopithecus-afarensis /blog/australopithecus-afarensis-vs-africanus  301!
 /blog/kenyanthropus-platyops-vs-australopithecus-afarensis.html /blog/australopithecus-afarensis-vs-africanus  301!
-/blog/laetoli-vs-hadar                                     /blog/australopithecus-afarensis-vs-africanus  301!
-/blog/laetoli-vs-hadar.html                                /blog/australopithecus-afarensis-vs-africanus  301!
+/blog/laetoli-vs-hadar                                     /blog/laetoli-footprints                       301!
+/blog/laetoli-vs-hadar.html                                /blog/laetoli-footprints                       301!
 /blog/levallois-technique                                  /blog/stone-knapping-methods                   301!
 /blog/levallois-technique.html                             /blog/stone-knapping-methods                   301!
 /blog/mousterian-vs-aurignacian                            /blog/stone-knapping-methods                   301!
@@ -54,10 +54,10 @@
 /blog/paranthropus-boisei-vs-robustus.html                 /blog/paranthropus-vs-australopithecus         301!
 /blog/rising-star-vs-sterkfontein                          /blog/homo-naledi-vs-australopithecus          301!
 /blog/rising-star-vs-sterkfontein.html                     /blog/homo-naledi-vs-australopithecus          301!
-/blog/sahelanthropus-vs-orrorin                            /blog/why-did-humans-start-walking-upright     301!
-/blog/sahelanthropus-vs-orrorin.html                       /blog/why-did-humans-start-walking-upright     301!
-/blog/zhoukoudian-vs-dmanisi                               /blog/out-of-africa-theory-explained           301!
-/blog/zhoukoudian-vs-dmanisi.html                          /blog/out-of-africa-theory-explained           301!
+/blog/sahelanthropus-vs-orrorin                            /blog/toumai-skull-sahelanthropus              301!
+/blog/sahelanthropus-vs-orrorin.html                       /blog/toumai-skull-sahelanthropus              301!
+/blog/zhoukoudian-vs-dmanisi                               /blog/dmanisi-hominins                         301!
+/blog/zhoukoudian-vs-dmanisi.html                          /blog/dmanisi-hominins                         301!
 
 # The species hub moved to its own directory (one page per species).
 /species.html                                              /species/                                      301!

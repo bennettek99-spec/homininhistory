@@ -301,3 +301,5 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 .page-prose .refs li{font-size:.85rem;color:var(--ink-muted);padding-left:0}
 .page-prose .refs li::before{display:none}
 
+.rsec a.inl{color:var(--teal);border-bottom:1px solid color-mix(in oklab,var(--teal),transparent 55%)}
+.rsec a.inl:hover{color:var(--accent);border-color:var(--accent)}
