@@ -303,3 +303,22 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 
 .rsec a.inl{color:var(--teal);border-bottom:1px solid color-mix(in oklab,var(--teal),transparent 55%)}
 .rsec a.inl:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Author byline + box (articles and species pages) */
+.article-meta a{color:inherit;border-bottom:1px solid color-mix(in oklab,currentColor,transparent 60%)}
+.article-meta a:hover{color:var(--accent);border-color:var(--accent)}
+.author-box{margin:2.6rem 0 0;padding:1.1rem 1.3rem;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface)}
+.author-box p{margin:0;font-size:.95rem;line-height:1.65;color:var(--ink-muted);max-width:none}
+.author-box strong{color:var(--ink)}
+.author-box a{color:var(--teal);border-bottom:1px solid color-mix(in oklab,var(--teal),transparent 55%)}
+.author-box a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* Related-article cards (also used on species pages, which lack the article inline CSS) */
+.related{border-top:1px solid var(--line);margin-top:3rem;padding-top:1.8rem}
+.related .lbl{font-family:var(--font-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.12em;color:var(--ink-faint);display:block;margin-bottom:1.1rem}
+.related-grid{display:grid;grid-template-columns:1fr;gap:.8rem}
+@media(min-width:640px){.related-grid{grid-template-columns:1fr 1fr}}
+.related-grid a{display:block;padding:1rem 1.2rem;border:1px solid var(--line);border-radius:var(--r-md);background:var(--surface);transition:transform var(--t),box-shadow var(--t),border-color var(--t)}
+.related-grid a:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.related-grid .rk{display:block;font-family:var(--font-mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+.related-grid .rt{display:block;font-family:var(--font-display);font-size:1.04rem;margin-top:.3rem;color:var(--ink);line-height:1.25}

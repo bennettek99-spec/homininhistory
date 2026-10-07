@@ -1,5 +1,6 @@
 # Retired articles -> the pillar that replaced them.
-# The old stub files still exist as a fallback, so these need the force (!) flag.
+# The old noindex stub files were deleted in Oct 2026; these 301s are the only
+# handling for the retired URLs. Keep the force (!) flag for consistency.
 /blog/acheulean-vs-mousterian                              /blog/stone-knapping-methods                   301!
 /blog/acheulean-vs-mousterian.html                         /blog/stone-knapping-methods                   301!
 /blog/australopithecus-anamensis-vs-afarensis              /blog/australopithecus-afarensis-vs-africanus  301!
@@ -64,6 +65,7 @@
 
 # One canonical URL per page: .html always 301s to the extensionless form.
 /about.html                                                /about                                         301!
+/editorial-standards.html                                  /editorial-standards                           301!
 /atlas/index.html                                          /atlas/                                        301!
 /blog/animals-homo-erectus-encountered.html                /blog/animals-homo-erectus-encountered         301!
 /blog/animals-of-flores-homo-floresiensis.html             /blog/animals-of-flores-homo-floresiensis      301!
