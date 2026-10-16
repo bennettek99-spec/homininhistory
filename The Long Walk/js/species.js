@@ -108,7 +108,7 @@ window.SPECIES = [
   ],
   sources:[
     {name:"Smithsonian Human Origins — A. afarensis", url:"https://humanorigins.si.edu/evidence/human-fossils/species/australopithecus-afarensis"},
-    {name:"Natural History Museum — Lucy", url:"https://www.nhm.ac.uk/discover/lucy-the-australopithecus.html"}
+    {name:"Institute of Human Origins, ASU — Lucy’s Story", url:"https://iho.asu.edu/lucy"}
   ]
 },
 {
@@ -363,7 +363,7 @@ window.SPECIES = [
     ]}
   ],
   sources:[
-    {name:"Natural History Museum — Homo floresiensis", url:"https://www.nhm.ac.uk/discover/homo-floresiensis-the-hobbit.html"},
+    {name:"Australian Museum — Homo floresiensis", url:"https://australian.museum/learn/science/human-evolution/homo-floresiensis/"},
     {name:"Smithsonian Human Origins — H. floresiensis", url:"https://humanorigins.si.edu/evidence/human-fossils/species/homo-floresiensis"}
   ]
 },
@@ -431,8 +431,8 @@ window.SPECIES = [
     ]}
   ],
   sources:[
-    {name:"Smithsonian Human Origins — Denisovans", url:"https://humanorigins.si.edu/evidence/genetics/denisovans"},
-    {name:"Natural History Museum — Denisovans", url:"https://www.nhm.ac.uk/discover/who-were-the-denisovans.html"}
+    {name:"Reich et al. 2010, Nature — Denisovan genome", url:"https://www.nature.com/articles/nature09710"},
+    {name:"Australian Museum — The Denisovans", url:"https://australian.museum/learn/science/human-evolution/the-denisovans/"}
   ]
 },
 {

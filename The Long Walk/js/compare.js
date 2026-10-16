@@ -76,7 +76,7 @@
   }
   function table(a,b){
     const ea=EXTRA[a.id]||{},eb=EXTRA[b.id]||{};
-    return `<table class="cmp-table"><thead><tr><th>Trait</th><th><em>${esc(fullName(a))}</em></th><th><em>${esc(fullName(b))}</em></th></tr></thead><tbody>
+    return `<div class="tbl-scroll"><table class="cmp-table"><thead><tr><th>Trait</th><th><em>${esc(fullName(a))}</em></th><th><em>${esc(fullName(b))}</em></th></tr></thead><tbody>
       ${row('Lived',a.dateLabel,b.dateLabel)}
       ${row('Era',a.era,b.era)}
       ${row('Brain size',a.brain,b.brain)}
@@ -86,7 +86,7 @@
       ${row('Tools',ea.tools,eb.tools)}
       ${row('Discovered',a.discovered,b.discovered)}
       ${row('Fate / legacy',ea.fate,eb.fate)}
-    </tbody></table>`;
+    </tbody></table></div>`;
   }
 
   function render(){

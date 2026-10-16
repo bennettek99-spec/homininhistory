@@ -322,3 +322,24 @@ section{padding-block:clamp(3rem,7vw,6rem)}
 .related-grid a:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
 .related-grid .rk{display:block;font-family:var(--font-mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
 .related-grid .rt{display:block;font-family:var(--font-display);font-size:1.04rem;margin-top:.3rem;color:var(--ink);line-height:1.25}
+
+/* ---------- Mobile fixes (Oct 2026) ---------- */
+.tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.cmp-wrap{max-width:100%;-webkit-overflow-scrolling:touch}
+.leaflet-tile-pane .tiles-dark{filter:invert(1) hue-rotate(180deg) brightness(.92) contrast(.9) saturate(.6)}
+@media(max-width:640px){
+  .blog-body .cmp-wrap .cmp{min-width:520px}
+  .blog-body .cmp-wrap .cmp td:first-child,.tbl-scroll .cmp-table td:first-child{white-space:normal;min-width:7.5rem;max-width:10rem}
+  .tbl-scroll .cmp-table{min-width:480px}
+  .method-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .nav-in{position:relative;flex-wrap:wrap;row-gap:0}
+  .nav-links{width:100%;margin-left:0;flex-wrap:nowrap;justify-content:space-between;gap:0}
+  .nav-links .icon-btn{position:absolute;top:.6rem;right:clamp(1.1rem,4vw,2.5rem)}
+}
+@media(max-width:559px){
+  .tl-item{padding-left:50px}
+  .tl-node{left:16px}
+  .card-row{grid-template-columns:1fr}
+  .card-thumb img{height:170px;min-height:0;object-position:center 30%}
+  .card .tag{-webkit-line-clamp:3}
+}

@@ -41,7 +41,7 @@
     if(!window.L){el.innerHTML='<div style="padding:2rem;color:var(--ink-muted)">Interactive map unavailable; use the complete locality list beside it.</div>';return;}
     map=L.map(el,{scrollWheelZoom:false,minZoom:6,maxZoom:12}).setView([42.75,11.45],7);
     const theme=()=>document.documentElement.getAttribute('data-theme')||'light';let tiles;
-    const setTiles=()=>{if(tiles)map.removeLayer(tiles);const dark=theme()==='dark';tiles=L.tileLayer(dark?'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png':'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',{subdomains:'abcd',maxZoom:12,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);tiles.bringToBack();};setTiles();
+    const setTiles=()=>{if(tiles)map.removeLayer(tiles);const dark=theme()==='dark';tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:12,className:dark?'tiles-dark':'',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);tiles.bringToBack();};setTiles();
     SITES.forEach((s,i)=>{
       const marker=L.circleMarker([s.lat,s.lon],{radius:5+Math.sqrt(s.n)*2.2,color:s.outliers?'#b4531f':'#fff',weight:s.outliers?3:1,fillColor:'#2f6f6a',fillOpacity:.84})
         .bindPopup(`<b>${s.site}</b><br><span style="font-size:.78rem">${s.n} individual${s.n===1?'':'s'} · ${dates(s)}${s.outliers?`<br>${s.outliers} outlier-labelled sample${s.outliers===1?'':'s'}`:''}</span>`)

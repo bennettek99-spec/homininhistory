@@ -44,14 +44,13 @@
     ["Lascaux",45.05,1.17,"France","~17 ka","Famed Ice-Age cave paintings","sapiens","/blog/lascaux-vs-chauvet"]
   ];
 
-  const TILE={light:'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-              dark:'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'};
+  const TILE={light:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',dark:'https://tile.openstreetmap.org/{z}/{x}/{y}.png'};
   let map,tileLayer,layers={};
   const theme=()=>document.documentElement.getAttribute('data-theme')||'light';
 
   function setTile(){
     if(tileLayer)map.removeLayer(tileLayer);
-    tileLayer=L.tileLayer(TILE[theme()],{subdomains:'abcd',maxZoom:8,attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+    tileLayer=L.tileLayer(TILE[theme()],{maxZoom:8,className:theme()==='dark'?'tiles-dark':'',attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
     tileLayer.bringToBack();
   }
   function makeLayers(){

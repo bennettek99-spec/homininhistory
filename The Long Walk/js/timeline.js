@@ -46,7 +46,7 @@ function renderTimeline(){
               <div class="card-meta">
                 <span class="chip">🧠 ${s.brain}</span>
                 <span class="chip">📍 ${s.region.split(/[,(]/)[0].trim()}</span>
-                <span class="chip">${(function(t){t=s.relation.split('—')[0].trim();return t.length>26?t.slice(0,t.lastIndexOf(' ',26)).trim()+'…':t;})()}</span>
+                <span class="chip">${s.relation.split('—')[0].trim()}</span>
               </div>
               <div class="bw" title="brain size relative to modern human"><span style="width:${brainPct(s.brain)}%"></span></div>
             </div>

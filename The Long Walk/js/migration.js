@@ -11,8 +11,8 @@
 
   let map, layers={}, DATA;
   const TILE={
-    light:'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
-    dark:'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
+    light:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+    dark:'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
   };
   let tileLayer;
 
@@ -98,8 +98,8 @@
   function setTile(){
     const url=TILE[currentTheme()];
     if(tileLayer)map.removeLayer(tileLayer);
-    tileLayer=L.tileLayer(url,{subdomains:'abcd',maxZoom:8,
-      attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+    tileLayer=L.tileLayer(url,{maxZoom:8,className:currentTheme()==='dark'?'tiles-dark':'',
+      attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
     tileLayer.bringToBack();
   }
 
