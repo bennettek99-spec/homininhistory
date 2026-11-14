@@ -30,8 +30,16 @@
   const esc = s=>String(s==null?"":s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
 
   function fullName(s){return `${s.genus} ${s.species}`;}
+  // On narrow screens show only the scientific name so the selected species is not cut off.
+  const NARROW = window.matchMedia ? window.matchMedia('(max-width:560px)') : {matches:false};
   function optionList(sel){
-    return IDS.map(id=>`<option value="${id}"${id===sel?' selected':''}>${esc(fullName(SP[id]))}${SP[id].common?' — '+esc(SP[id].common):''}</option>`).join('');
+    const short = NARROW.matches;
+    return IDS.map(id=>`<option value="${id}"${id===sel?' selected':''}>${esc(fullName(SP[id]))}${(!short&&SP[id].common)?' — '+esc(SP[id].common):''}</option>`).join('');
+  }
+  function refreshOptions(){
+    const a=$('selA').value,b=$('selB').value;
+    $('selA').innerHTML=optionList(a);
+    $('selB').innerHTML=optionList(b);
   }
   function bp(v){return v>=1e6?(v/1e6).toFixed(1).replace(/\.0$/,'')+' Ma':Math.round(v/1e3)+' ka';}
 
@@ -113,6 +121,7 @@
     $('selB').innerHTML=optionList(b);
     $('selA').addEventListener('change',render);
     $('selB').addEventListener('change',render);
+    if(NARROW.addEventListener) NARROW.addEventListener('change',refreshOptions);
     $('swapBtn').addEventListener('click',()=>{const t=$('selA').value;$('selA').value=$('selB').value;$('selB').value=t;render();});
     $('randBtn').addEventListener('click',()=>{
       let i=IDS[Math.floor(Math.random()*IDS.length)],j=IDS[Math.floor(Math.random()*IDS.length)];

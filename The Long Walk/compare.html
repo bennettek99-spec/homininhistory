@@ -22,7 +22,7 @@
   .cmp-controls{display:flex;flex-wrap:wrap;gap:.8rem;align-items:end;margin:.4rem 0 2rem}
   .cmp-controls .fld{display:flex;flex-direction:column;gap:.35rem;flex:1 1 240px;min-width:0}
   .cmp-controls label{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint)}
-  .cmp-controls select{font-family:var(--font-display);font-style:italic;font-size:1.05rem;padding:.65rem .8rem;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-md)}
+  .cmp-controls select{width:100%;max-width:100%;min-width:0;text-overflow:ellipsis;font-family:var(--font-display);font-style:italic;font-size:1.05rem;padding:.65rem .8rem;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:var(--r-md)}
   .cmp-controls select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in oklab,var(--accent),transparent 80%)}
   .cmp-controls .mini{display:flex;gap:.5rem}
   .cmp-icon{font-family:var(--font-mono);font-size:.8rem;padding:.65rem .9rem;background:var(--surface);color:var(--ink-muted);border:1px solid var(--line);border-radius:var(--r-md);cursor:pointer;transition:border-color var(--t),color var(--t)}
@@ -65,6 +65,7 @@
   .cmp-table tbody tr:nth-child(even) td{background:color-mix(in oklab,var(--surface-2),transparent 30%)}
   #links{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:2rem}
   @media(max-width:560px){
+    .cmp-controls select{font-size:1rem;padding:.6rem 2rem .6rem .7rem}
     .cmp-portrait{width:64px;height:64px}.cmp-sil-wrap{height:230px}
     #scaleStage{min-height:290px}.cmp-tl-row{grid-template-columns:78px 1fr}.cmp-tl-axis{margin-left:78px}
   }
