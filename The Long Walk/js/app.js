@@ -55,12 +55,13 @@
   }
   function theme(){
     const r=document.documentElement;
-    let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+    let saved=null;try{saved=localStorage.getItem('theme');}catch(e){}
+    let d=(saved==='dark'||saved==='light')?saved:(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
     r.setAttribute('data-theme',d);
     const btn=document.querySelector('[data-theme-toggle]');
     const paint=()=>{btn.innerHTML=d==='dark'?SUN:MOON;};
     paint();
-    btn&&btn.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);paint();
+    btn&&btn.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);try{localStorage.setItem('theme',d);}catch(e){}paint();
       window.dispatchEvent(new CustomEvent('themechange',{detail:d}));});
   }
   function reveal(){
